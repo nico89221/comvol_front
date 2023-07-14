@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import EditarProyecto from './EditarProyecto';
+
 
 function VistaProyectoCreado() {
 
     let { id } = useParams();
     let url = 'https://apicomvolbackend-production.up.railway.app/proyecto/detalle?id_proyecto=' + id;
-    let urlEditar = "../editar_proyecto/" + id;
+
     
 
     const [detalle, setDetalle] = useState(null);
