@@ -91,7 +91,7 @@ let suscribir = async (e) => {
         <section class='section-suscripcion'>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <div class="card" style={{ width: "18rem" }}>
-                <img src="http://192.168.0.183:3000/img/comvol.jpg" class="card-img-top" alt="..." />
+                <img src="https://main--stellar-bublanina-20e9ef.netlify.app/img/comvol.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">Suscribite para:</h5>
                     <p class="card-text">{tilde} Tus proyectos destaquen</p>

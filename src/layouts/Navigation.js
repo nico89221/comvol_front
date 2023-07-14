@@ -54,7 +54,7 @@ export default function Navigation() {
 
   return (
     <Navbar bg='dark' variant='dark' expand="lg">
-      <Navbar.Brand as={NavLink} to='/'><img src="http://192.168.0.183:3000/img/logo2.png" class="logo" alt="..." /></Navbar.Brand>
+      <Navbar.Brand as={NavLink} to='/'><img src="https://main--stellar-bublanina-20e9ef.netlify.app/img/logo2.png" class="logo" alt="..." /></Navbar.Brand>
       <NavbarToggle aria-controls='main-menu'></NavbarToggle>
       <Navbar.Collapse id='main-menu' className='main-menu'>
         <Nav >

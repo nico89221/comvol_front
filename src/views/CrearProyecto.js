@@ -38,7 +38,7 @@ class CrearProyecto extends React.Component {
             idFormaDePago: 0,
             esEmpresa: false,
             idResponsable: localStorage.getItem('id'),
-            urlImagenProyecto: "http://192.168.0.183:3000/img/comvol.jpg",
+            urlImagenProyecto: "https://main--stellar-bublanina-20e9ef.netlify.app//img/comvol.jpg",
             loading: false,
             errors: {}
 

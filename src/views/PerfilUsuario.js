@@ -135,7 +135,7 @@ function PerfilUsuario() {
                     <div class="form-row">
                         <div class="form-group" >
                             <div class='img-div'>
-                                <img src='http://192.168.0.183:3000/img/user.jpg' alt="project-image" class="img-detalle-vista"></img>
+                                <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/user.jpg' alt="project-image" class="img-detalle-vista"></img>
                             </div>
                             <label for="inputEmail4" className='label_proyecto'>Nombre</label>
                             <input name='nombre' type="text" class="form-control" id="nombre"

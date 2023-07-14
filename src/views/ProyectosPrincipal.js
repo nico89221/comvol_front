@@ -33,20 +33,20 @@ function ProyectosPrincipal() {
             <section className="principal">
                 <Carousel >
                 <Carousel.Item>
-                    <img src='http://192.168.0.183:3000/img/banner.jpg' alt="project-image" class="img-banner"></img>
+                    <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/banner.jpg' alt="project-image" class="img-banner"></img>
                     <Carousel.Caption>
                         <h3>Conoce a nuestros Partners principales</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img src='http://192.168.0.183:3000/img/banner.jpg' alt="project-image" class="img-banner"></img>
+                    <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/banner.jpg' alt="project-image" class="img-banner"></img>
 
                     <Carousel.Caption>
                         <h3>Conoce a nuestros Partners principales</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img src='http://192.168.0.183:3000/img/banner.jpg' alt="project-image" class="img-banner"></img>
+                    <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/banner.jpg' alt="project-image" class="img-banner"></img>
 
                     <Carousel.Caption>
                     <h3>Conoce a nuestros Partners principales</h3>
