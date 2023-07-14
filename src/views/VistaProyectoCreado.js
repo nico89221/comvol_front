@@ -7,8 +7,6 @@ function VistaProyectoCreado() {
     let { id } = useParams();
     let url = 'https://apicomvolbackend-production.up.railway.app/proyecto/detalle?id_proyecto=' + id;
 
-    
-
     const [detalle, setDetalle] = useState(null);
 
     useEffect(() => {
