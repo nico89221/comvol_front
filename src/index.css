@@ -546,5 +546,127 @@ a .btn-detalle {
 }
 
 
+@media only screen and (max-width: 812px) {
+
+  .carousel-control-next span {
+    top: -100px;
+    position: relative;
+  }
+
+  .carousel-control-prev span {
+    top: -100px;
+    position: relative;
+  }
+  
+  .carousel-caption{
+    top: 120px;
+    left: 3px;
+  }
+  .carousel-caption h3{
+    font-size: 18px;
+  }
+
+  .carousel-indicators{
+    top: 40px;
+    position: fixed;
+    margin-bottom: 0px;
+
+  }
+
+  .carousel-indicators button{
+    top: 120px;
+    position: relative;
+
+  }
+
+  .filtrar{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    
+
+  }
+
+  .selector-proyecto{
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+
+  .button-proyecto{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    
+  }
+
+  .button-proyecto span{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .card {
+    margin: 0px;
+}
+
+element.style .card {
+  width: 100%;
+}
+
+.container .row{
+  display: flex;
+  flex-flow: row wrap-reverse
+}
+
+.project-info-box h3{
+
+margin-top: 2px;
+}
+
+.project-info-box{
+  padding-bottom: 0px;
+}
+
+.project-info-box p{
+  padding-top: 5px;
+  padding-left: 3px;
+}
+
+.container .row .col-md-5 .btn-postularse{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.container .row .col-md-5 .btn-postularse button{
+  width: 80%;
+  font-size: 18px;
+}
+
+.form-proyecto{
+  width: 95%;
+}
+
+.btn-sus button{
+  width: 80%;
+  font-size: 18px;
+}
+
+.navbar-nav{
+  text-align: center;
+}
+
+
+
+}
+
 
 

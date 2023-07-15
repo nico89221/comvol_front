@@ -62,7 +62,7 @@ function DetalleProyecto(props) {
                             <p><b>Product Owner: </b>{detalle.nombreReferente}</p>
                             <p><b>Forma de Pago: </b>{detalle.formaDePago}</p>
                         </div>
-                        <div>
+                        <div className='btn-postularse'>
                             {btnPostularse}
                         </div>
                     </div>
