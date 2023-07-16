@@ -75,9 +75,12 @@ function BuscadorProyecto() {
                     <div class='selector-proyecto'>
                         <select class="form-control" aria-label="Default select example" id='categoria' name='categoria' onChange={handleChange}>
                             <option selected value={0}>Categoria</option>
-                            <option value={1}>Videojuegos</option>
-                            <option value={2}>Mobile</option>
-                            <option value={3}>Ingenieria</option>
+                            <option value={1}>VIDEOJUEGOS</option>
+                            <option value={2}>APLICACIONES MOVILES</option>
+                            <option value={3}>APLICACIONES WEB</option>
+                            <option value={4}>EMPLEOS</option>
+                            <option value={5}>INVERSIONES</option>
+                            <option value={6}>COMMUNITY MANAGER</option>
                         </select>
                     </div>
                     <div class='selector-proyecto'>
