@@ -80,14 +80,27 @@ function BuscadorPerfil() {
                     <div class='selector-proyecto'>
                         <select class="form-control" aria-label="Default select example" id='rol' name='rol' onChange={handleChange}>
                             <option selected value={0}>Rol</option>
-                            <option value={1}>Desarrollador Backend Java</option>
-                            <option value={2}>Desarrolador Frontend Angular</option>
+                            <option value={1}>Programador</option>
+                            <option value={2}>QA</option>
+                            <option value={3}>Analista</option>
+                            <option value={4}>Quiero ser inversor</option>
+                            <option value={5}>Busco trabajo</option>
+                            <option value={6}>Quiero aprender</option>
                         </select>
                     </div>
                     <div class='selector-proyecto'>
                         <select class="form-control" aria-label="Default select example" id='pais' name='pais' onChange={handleChange}>
                             <option selected value={0}>Pais</option>
+                            <option selected>Sin definir</option>
                             <option value={1}>Argentina</option>
+                            <option value={2}>Chile</option>
+                            <option value={3}>Uruguay</option>
+                            <option value={4}>Paraguay</option>
+                            <option value={5}>Brasil</option>
+                            <option value={6}>Bolivia</option>
+                            <option value={7}>Ecuador</option>
+                            <option value={8}>Peru</option>
+                            <option value={9}>Mexico</option>
                         </select>
                     </div>
                     <div class='button-proyecto'>
