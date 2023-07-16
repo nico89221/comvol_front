@@ -153,8 +153,11 @@ function EditarProyecto() {
                             <label for="inputState" className='label_proyecto'>Categoria</label>
                             <select id='idCategoria' value={detalle.idCategoria} onChange={handleChange} name='idCategoria' class="form-control"  >
                                 <option value={1}>VIDEOJUEGOS</option>
-                                <option value={2}>MOBILE</option>
-                                <option value={3}>INGENIERIA</option>
+                                <option value={2}>APLICACIONES MOVILES</option>
+                                <option value={3}>APLICACIONES WEB</option>
+                                <option value={4}>EMPLEOS</option>
+                                <option value={5}>INVERSIONES</option>
+                                <option value={6}>COMMUNITY MANAGER</option>
                             </select>
                         </div>
                         <div class='label_proyecto'>

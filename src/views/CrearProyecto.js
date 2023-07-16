@@ -150,8 +150,11 @@ class CrearProyecto extends React.Component {
                             <select id='idCategoriaProyecto' value={this.state.idCategoriaProyecto.value} onChange={this.handleChange} name='idCategoriaProyecto' class="form-control"  >
                                 <option selected>Sin definir</option>
                                 <option value={1}>VIDEOJUEGOS</option>
-                                <option value={2}>MOBILE</option>
-                                <option value={3}>INGENIERIA</option>
+                                <option value={2}>APLICACIONES MOVILES</option>
+                                <option value={3}>APLICACIONES WEB</option>
+                                <option value={4}>EMPLEOS</option>
+                                <option value={5}>INVERSIONES</option>
+                                <option value={6}>COMMUNITY MANAGER</option>
                             </select>
                             {errors.idCategoriaProyecto && <span className='error'>{errors.idCategoriaProyecto}</span>}
                         </div>

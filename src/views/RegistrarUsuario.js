@@ -217,6 +217,14 @@ class RegistrarUsuario extends React.Component {
                             <select id='pais' value={this.state.pais.value} onChange={this.handleChange} name='pais' class="form-control"  >
                                 <option selected>Sin definir</option>
                                 <option value={1}>Argentina</option>
+                                <option value={2}>Chile</option>
+                                <option value={3}>Uruguay</option>
+                                <option value={4}>Paraguay</option>
+                                <option value={5}>Brasil</option>
+                                <option value={6}>Bolivia</option>
+                                <option value={7}>Ecuador</option>
+                                <option value={8}>Peru</option>
+                                <option value={9}>Mexico</option>
                             </select>
                             {errors.pais && <span className='error'>{errors.pais}</span>}
                         </div>
@@ -247,8 +255,12 @@ class RegistrarUsuario extends React.Component {
                             <label for="inputState" className='label_proyecto'>Rol</label>
                             <select id='personaRoles' value={this.state.personaRoles.value} onChange={this.handleChange} name='personaRoles' class="form-control"  >
                                 <option selected>Sin definir</option>
-                                <option value={1}>Desarrollador Backend Java</option>
-                                <option value={2}>Desarrolador Frontend Angular</option>
+                                <option value={1}>Programador</option>
+                                <option value={2}>QA</option>
+                                <option value={3}>Analista</option>
+                                <option value={4}>Quiero ser inversor</option>
+                                <option value={5}>Busco trabajo</option>
+                                <option value={6}>Quiero aprender</option>
                             </select>
                             {errors.personaRoles && <span className='error'>{errors.personaRoles}</span>}
                         </div>
