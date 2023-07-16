@@ -172,8 +172,9 @@ function EditarProyecto() {
                         <div class="label_proyecto form-group">
                             <label for="inputState" className='label_proyecto'>Forma de Pago</label>
                             <select id='idFormaDePago' name='idFormaDePago' value={detalle.idFormaDePago} onChange={handleChange} class="form-control"  >
-                                <option selected value={0} >Sin definir</option>
+                                <option selected value={0} >Ingresa una forma de pago</option>
                                 <option type="number" value={1}>CONTRATACION</option>
+                                <option type="number" value={2}>SIN DEFINIR</option>
                             </select>
                         </div>
                         <div class="form-check">

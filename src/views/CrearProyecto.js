@@ -161,8 +161,9 @@ class CrearProyecto extends React.Component {
                         <div class="label_proyecto form-group">
                             <label for="inputState" className='label_proyecto'>Forma de Pago</label>
                             <select id='idFormaDePago' name='idFormaDePago' value={this.state.idFormaDePago.value} onChange={this.handleChange} class="form-control"  >
-                                <option selected value={0} >Sin definir</option>
+                                <option selected value={0} >Ingresa una forma de pago</option>
                                 <option type="number" value={1}>CONTRATACION</option>
+                                <option type="number" value={2}>SIN DEFINIR</option>
                             </select>
                             {errors.idFormaDePago && <span className='error'>{errors.idFormaDePago}</span>}
                         </div>
