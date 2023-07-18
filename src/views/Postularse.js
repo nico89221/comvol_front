@@ -152,8 +152,12 @@ function Postularse() {
                             <div class='rol-postulacion'>
                                 <select id='idRol' name='idRol' class="form-control" onChange={handleChange}>
                                     <option selected value={0}>Elegi un rol</option>
-                                    <option value={1}>Desarrollador Backend Java</option>
-                                    <option value={2}>Desarrolador Frontend Angular</option>
+                                    <option value={1}>Programador</option>
+                                    <option value={2}>QA</option>
+                                    <option value={3}>Analista</option>
+                                    <option value={4}>Quiero ser inversor</option>
+                                    <option value={5}>Busco trabajo</option>
+                                    <option value={6}>Quiero aprender</option>
                                 </select>
                             </div>
                             <div class='error-span'>
