@@ -241,6 +241,7 @@ function EditarUsuario() {
                                     <option value={4}>Quiero ser inversor</option>
                                     <option value={5}>Busco trabajo</option>
                                     <option value={6}>Quiero aprender</option>
+                                    <option value={6}>Empleador</option>
                                 </select>
                             </div>
                         </div>
