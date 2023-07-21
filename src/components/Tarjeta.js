@@ -7,7 +7,7 @@ function Tarjeta(props) {
     let urlDetalle = "detalle_proyecto/" + props.idProyecto;
     return (
         <div class="card" style={{ width: "18rem" }}>
-            <img class="card-img-top" src={urlImg} alt="Card image cap"></img>
+            <img class="card-prueba" style={{height:240}} src={urlImg} alt="Card image cap"></img>
             <div class="card-body">
                 <h5 class="card-title"><b>{props.tituloProyecto}</b></h5>
                 <p class="card-text proyecto-desc">{props.descripcionProyecto}</p>
