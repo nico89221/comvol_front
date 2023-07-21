@@ -11,10 +11,6 @@ const validate = event => {
             errors.nombre = "Este campo es obligatorio"
         }
 
-        if (event.target.apellido.value == "") {
-            errors.apellido = "Este campo es obligatorio"
-        }
-
         if (event.target.provincia.value == "") {
             errors.provincia = "Este campo es obligatorio"
         }
