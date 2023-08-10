@@ -6,10 +6,10 @@ function PerfilUsuario() {
 
     console.log(localStorage.getItem('id'))
 
-    if (localStorage.getItem('id')) {
-        console.log("existe")
+   if (localStorage.getItem('id')) {
+       console.log("existe")
     } else {
-        window.location = '/sigin'
+        window.location = '/'
     }
 
     const delay = ms => new Promise(
@@ -27,7 +27,9 @@ function PerfilUsuario() {
             .then(response => response.json())
             .then((data) => {
                 if (data.descripcion == "El usuario ya se encuentra dado de baja") {
-                    window.location = '/sigin'
+                    localStorage.removeItem('id')
+                    localStorage.removeItem('tipoUsuario')
+                    window.location = '/'
                 } else {
                     setPerfil(data)
                 }
@@ -53,11 +55,13 @@ function PerfilUsuario() {
             let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona/baja?id_persona=' + localStorage.getItem('id'), config)
             console.log(res)
             if (res.status == 200) {
-                localStorage.removeItem('id');
-                localStorage.removeItem('tipoUsuario'); 
-                
+                localStorage.removeItem('id')
+                localStorage.removeItem('tipoUsuario')
+                window.location = '/'
+            }else{
+                window.location = '/'
             }
-            window.location = '/'
+            
 
         } catch (error) {
 
@@ -102,7 +106,7 @@ function PerfilUsuario() {
 
         } catch (error) {
 
-
+            window.location = '/'
         }
 
     }
