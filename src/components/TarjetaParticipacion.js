@@ -32,7 +32,7 @@ function TarjetaParticipacion(props) {
             console.log(json)
 
 
-            //window.location = '/';
+            window.location = '/participacion_proyectos';
 
         } catch (error) {
 

@@ -63,7 +63,7 @@ function FilaPostulacion(props) {
             
             await delay(10000);
 
-            //window.location = '/';
+            window.location = '/mis_proyectos/vista_proyecto/' + props.idProyecto;
 
         } catch (error) {
 
@@ -104,7 +104,7 @@ function FilaPostulacion(props) {
             
             await delay(10000);
 
-            //window.location = '/';
+            window.location = '/mis_proyectos/vista_proyecto/' + props.idProyecto;
 
         } catch (error) {
 
