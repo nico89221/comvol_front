@@ -101,8 +101,6 @@ function FilaPostulacion(props) {
                 theme: "colored",
                 });
 
-            
-            await delay(10000);
 
             window.location = '/mis_proyectos/vista_proyecto/' + props.idProyecto;
 
