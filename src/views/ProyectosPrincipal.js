@@ -33,7 +33,7 @@ function ProyectosPrincipal() {
             <section className="principal">
                 <Carousel >
                 <Carousel.Item>
-                    <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/banner2.png' alt="project-image" class="img-banner"></img>
+                    <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/banner2.png' style={{height:400,width:1200}} alt="project-image" class="img-banner"></img>
                     <Carousel.Caption>
                         <h3></h3>
                     </Carousel.Caption>
