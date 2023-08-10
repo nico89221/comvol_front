@@ -59,7 +59,7 @@ function FilaIntegrantes(props) {
                 theme: "colored",
                 });
 
-            await delay(100);
+            //await delay(100);
 
             window.location = '/mis_proyectos/integrantes/' + props.idProyecto;
 
