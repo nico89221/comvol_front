@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import {
+
+    LinkedinShareButton,
+    LinkedinIcon,
+
+} from "react-share";
 
 
 function TarjetaParticipacion(props) {
@@ -6,6 +12,9 @@ function TarjetaParticipacion(props) {
     let urlImg = props.urlImagenProyecto;
     let urlDetalle = "detalle_proyecto/" + props.idProyecto;
     const [rechazar, setRechazar] = useState({ idEstadoPersona: 3 });
+    let url = "https://main--stellar-bublanina-20e9ef.netlify.app/detalle_proyecto/" + props.idProyecto
+    let title = "Proyecto en el que participo"
+    let summary = "Proyecto en el que participo"
 
     useEffect(() => {
         console.log(props.idPersonaProyecto)
@@ -50,6 +59,7 @@ function TarjetaParticipacion(props) {
                     <a href={urlDetalle} class="btn btn-primary btn-detalle">Ver proyecto</a>
                 </div>
             </div>
+            
     } else {
         botones =
             <div class="container-fechas">
@@ -63,6 +73,7 @@ function TarjetaParticipacion(props) {
     }
 
     return (
+
         <div class="card" style={{ width: "18rem" }}>
             <img class="card-img-top" src={urlImg} alt="Card image cap"></img>
             <div class="card-body">
@@ -91,6 +102,20 @@ function TarjetaParticipacion(props) {
                     </div>
                 </div>
                 {botones}
+                <div class='linkedin'>
+                    <div class='linkwrap'>
+                        
+                    </div>
+
+                    <div class='linkwrap'>
+                        <LinkedinShareButton url={url} title={title} className="share-button" summary={summary}>
+                        <p>Comparte</p>
+                            <LinkedinIcon size={40} round={true} width={240}>
+                            </LinkedinIcon>
+                        </LinkedinShareButton>
+                    </div>
+                </div>
+                
             </div>
         </div>
 

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { faMagnifyingGlass, faPencil, faEnvelopeOpenText, faUserGroup, faBan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+
+    LinkedinShareButton,
+    LinkedinIcon,
+
+} from "react-share";
 
 function Fila(props) {
 
@@ -10,6 +16,9 @@ function Fila(props) {
     let urlPostulaciones = "/mis_proyectos/postulaciones/" + props.idProyecto;
     let urlIntegrantes = "/mis_proyectos/integrantes/" + props.idProyecto;
     const [datos, estableceDatos] = useState('');
+    let url = "https://main--stellar-bublanina-20e9ef.netlify.app/detalle_proyecto/" + props.idProyecto
+    let title = "Proyecto en el que participo"
+    let summary = "Proyecto en el que participo"
 
 
 
@@ -23,7 +32,7 @@ function Fila(props) {
     let postulation;
     let peopleGroup;
     if (props && (props.descripcionEstado == "Cancelado" || props.descripcionEstado == "Finalizado")) {
-        search = <td><a  class="btn btn-light">
+        search = <td><a class="btn btn-light">
             <FontAwesomeIcon icon={faBan} style={{ color: "#e90118", fontSize: "26px", textAlign: "center" }} />
         </a></td>
         pencil = <td><a class="btn btn-light">
@@ -71,6 +80,12 @@ function Fila(props) {
             {pencil}
             {postulation}
             {peopleGroup}
+            <td>
+                <LinkedinShareButton url={url} title={title} className="share-button" summary={summary}>
+                    <LinkedinIcon size={40} round={true} width={60}>
+                    </LinkedinIcon>
+                </LinkedinShareButton>
+            </td>
         </tr>
 
 

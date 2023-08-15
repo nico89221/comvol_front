@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { img } from 'bootstrap'
 import Fila from '../components/Fila';
 
+
 function DetalleProyectoCreado(props) {
 
     let url = 'https://apicomvolbackend-production.up.railway.app/proyecto/lista_detalle?id_persona=' + localStorage.getItem('id');
@@ -54,6 +55,7 @@ function DetalleProyectoCreado(props) {
                             <td>Editar</td>
                             <td>Postulaciones</td>
                             <td>Integrantes</td>
+                            <td>Compartir</td>
                         </tr>
                     </thead>
                     <tbody>

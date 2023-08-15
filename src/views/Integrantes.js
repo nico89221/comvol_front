@@ -49,6 +49,8 @@ function Integrantes(props) {
                             <td>Rol postulado</td>
                             <td>Fecha de Alta</td>
                             <td>Fecha de Baja</td>
+                            <td>Contactar</td>
+                            <td></td>
                             <td></td>
                         </tr>
                     </thead>

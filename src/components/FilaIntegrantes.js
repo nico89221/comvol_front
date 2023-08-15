@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+    EmailIcon,
+    EmailShareButton,
+    WhatsappIcon,
+    WhatsappShareButton,
+  } from "react-share";
 
 function FilaIntegrantes(props) {
 
@@ -95,7 +101,11 @@ function FilaIntegrantes(props) {
             <td>{props.email}</td>
             <td>{props.rolPostulado}</td>
             <td>{props.fechaAltaPersonaAlProyecto}</td>
-            <td>{props.fechaBajaPersonaAlProyecto}</td>  
+            <td>{props.fechaBajaPersonaAlProyecto}</td> 
+            <td><EmailShareButton quote={props.email} subject={props.email} url={props.email} body={props.email} email={props.email}><EmailIcon size={40} round={true}></EmailIcon></EmailShareButton></td> 
+            <td><WhatsappShareButton url={props.email} title='1130469333'>
+ <WhatsappIcon type="button" size={40} round={true} />
+</WhatsappShareButton></td>
             {botonRechazar}
         </tr>
 

@@ -664,6 +664,26 @@ margin-top: 2px;
   text-align: center;
 }
 
+.linkedin{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.linkwrap{
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.linkwrap p{
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
 
 
 }
