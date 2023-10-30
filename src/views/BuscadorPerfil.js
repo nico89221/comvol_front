@@ -18,7 +18,7 @@ function BuscadorPerfil() {
         </span>
 
     useEffect(() => {
-        fetch("https://apicomvolbackend-production.up.railway.app/persona/filtrar?id_rol=&pagina=0&cantidad=20&id_pais=")
+        fetch("http://localhost:8080/persona/filtrar?id_rol=&pagina=0&cantidad=20&id_pais=")
             .then(response => response.json())
             .then((data) => {
 
@@ -53,7 +53,7 @@ function BuscadorPerfil() {
         event.preventDefault()
 
         console.log(buscar)
-        let url = "https://apicomvolbackend-production.up.railway.app/persona/filtrar?id_rol="+buscar.rol+"&pagina=0&cantidad=20&id_pais=" + buscar.pais;
+        let url = "http://localhost:8080/persona/filtrar?id_rol="+buscar.rol+"&pagina=0&cantidad=20&id_pais=" + buscar.pais;
         console.log(url)
         fetch(url)
             .then(response => response.json())
@@ -93,14 +93,6 @@ function BuscadorPerfil() {
                             <option selected value={0}>Pais</option>
                             <option selected>Sin definir</option>
                             <option value={1}>Argentina</option>
-                            <option value={2}>Chile</option>
-                            <option value={3}>Uruguay</option>
-                            <option value={4}>Paraguay</option>
-                            <option value={5}>Brasil</option>
-                            <option value={6}>Bolivia</option>
-                            <option value={7}>Ecuador</option>
-                            <option value={8}>Peru</option>
-                            <option value={9}>Mexico</option>
                         </select>
                     </div>
                     <div class='button-proyecto'>
@@ -122,8 +114,12 @@ function BuscadorPerfil() {
                                 <td>Provincia</td>
                                 <td>Localidad</td>
                                 <td>Perfil Externo</td>
-                                <td>Suscripto</td>
-                                <td>Rol</td>    
+                                <td>Acerca de</td>
+                                <td></td>
+                                <td>Rol</td>   
+                                <td>Compartir Proyecto</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>

@@ -16,7 +16,8 @@ function Fila(props) {
     let urlPostulaciones = "/mis_proyectos/postulaciones/" + props.idProyecto;
     let urlIntegrantes = "/mis_proyectos/integrantes/" + props.idProyecto;
     const [datos, estableceDatos] = useState('');
-    let url = "https://main--stellar-bublanina-20e9ef.netlify.app/detalle_proyecto/" + props.idProyecto
+    let url = "http://localhost:3000/detalle_proyecto/1"
+    //"http://localhost:3000/detalle_proyecto/" + props.idProyecto
     let title = "Proyecto en el que participo"
     let summary = "Proyecto en el que participo"
 
@@ -66,7 +67,6 @@ function Fila(props) {
 
     return (
         <tr>
-            <td>{props.idProyecto}</td>
             <td>{props.tituloProyecto}</td>
             <td>{props.descripcionCategoria}</td>
             <td>{props.descripcionEstado}</td>

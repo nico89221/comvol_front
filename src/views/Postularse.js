@@ -9,7 +9,7 @@ function Postularse() {
 
     let { id } = useParams();
     console.log(id);
-    let url = 'https://apicomvolbackend-production.up.railway.app/proyecto/detalle?id_proyecto=' + id;
+    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
 
     const [detalle, setDetalle] = useState(null);
     const [rol, setRol] = useState(null);
@@ -17,7 +17,7 @@ function Postularse() {
 
     const delay = ms => new Promise(
         resolve => setTimeout(resolve, ms)
-      );
+    );
 
     const validate = values => {
         const errors = {}
@@ -75,7 +75,7 @@ function Postularse() {
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                    });
+                });
                 return errors
             } else {
                 setErrors(null)
@@ -92,7 +92,7 @@ function Postularse() {
             }
             console.log(config.body)
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona_proyecto/postulacion?id_persona=' + localStorage.getItem('id') + '&id_proyecto=' + detalle.idProyecto, config)
+            let res = await fetch('http://localhost:8080/persona_proyecto/postulacion?id_persona=' + localStorage.getItem('id') + '&id_proyecto=' + detalle.idProyecto, config)
             let json = await res.json()
             console.log(json.descripcion)
             if (json.descripcion == "El usuario ya se encuentra postulado a ese proyecto") {
@@ -152,12 +152,15 @@ function Postularse() {
                             <div class='rol-postulacion'>
                                 <select id='idRol' name='idRol' class="form-control" onChange={handleChange}>
                                     <option selected value={0}>Elegi un rol</option>
-                                    <option value={1}>Programador</option>
-                                    <option value={2}>QA</option>
-                                    <option value={3}>Analista</option>
-                                    <option value={4}>Quiero ser inversor</option>
-                                    <option value={5}>Busco trabajo</option>
-                                    <option value={6}>Quiero aprender</option>
+                                    {
+                                        detalle.proyectoRoles.map(proy => {
+                                            return (
+                                                <option value={proy.idRol}>
+                                                    {proy.descripcionRol}
+                                                    </option>
+                                            )
+                                        })
+                                    }
                                 </select>
                             </div>
                             <div class='error-span'>

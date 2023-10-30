@@ -5,6 +5,7 @@ export default function CerrarSesion() {
     console.log("entra en cerrar sesion y existe")
     localStorage.removeItem('id');
     localStorage.removeItem('tipoUsuario');
+    localStorage.removeItem('esEmpresa')
     window.location = '/'
   }else{
     window.location = '/signIn'

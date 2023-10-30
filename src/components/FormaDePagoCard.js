@@ -31,7 +31,7 @@ let suscripcion = async() => {
                 <Col sm="12" md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
                     <Card body>
 
-                        <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/tarjeta.png' alt="project-image" class="img-tarjeta"></img>
+                        <img src='http://localhost:3000/img/tarjeta.png' alt="project-image" class="img-tarjeta"></img>
                         <Form>
                             <Form.Group control="email" className='label-inicio'>
                                 <Form.Label>Numero de Tarjeta </Form.Label>

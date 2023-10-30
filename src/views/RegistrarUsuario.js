@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import validator from 'validator'
+import { provincia } from '../js/ConstanteP'
 
 
 const delay = ms => new Promise(
@@ -11,6 +13,15 @@ const validate = values => {
     const errors = {}
 
     console.log("cantidad=" + values.cantidadIntegrantes)
+
+    if (validator.isStrongPassword(values.contrasena, {
+        minLength: 8, minLowercase: 1,
+        minUppercase: 1, minNumbers: 1, minSymbols: 1
+    })) {
+    } else {
+        errors.contrasena = "Debe tener al menos 8 caracteres, una mayuscula, un numero,un caracter especial"
+    }
+
 
     if (values.nombre == "") {
         errors.nombre = "Este campo es obligatorio"
@@ -30,8 +41,8 @@ const validate = values => {
     if (values.pais == 0) {
         errors.pais = "Tienes que asignar un pais"
     }
-    if (values.provincia == "") {
-        errors.provincia = "Este campo es obligatorio"
+    if (values.provincia == 0) {
+        errors.provincia = "Tienes que asignar una provincia"
     }
     if (values.localidad == "") {
         errors.localidad = "Este campo es obligatorio"
@@ -51,11 +62,24 @@ const validate = values => {
     if (values.contrasena != values.recontrasena) {
         errors.contrasena = "Las contraseñas no coinciden"
     }
+    if (values.categoria == 0) {
+        errors.categoria = "Este campo es obligatorio"
+    }
+    if (values.numeroCelular == "") {
+        errors.numeroCelular = "Este campo es obligatorio"
+    }
+    if (values.esEmpresa == 0) {
+        errors.esEmpresa = "Tienes que asignar si es o no empresa"
+    }
 
     return errors
 }
 
+let localidadApiantes =[]
+
 class RegistrarUsuario extends React.Component {
+
+
 
     constructor(props) {
         super(props);
@@ -71,16 +95,42 @@ class RegistrarUsuario extends React.Component {
             localidad: "",
             perfilExterno: "",
             personaRoles: [],
+            categoria: 0,
+            numeroCelular: "",
+            esEmpresa: 0,
             loading: false,
-            errors: {}
+            errors: {},
+            localidadApi: []
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        const pro = provincia;
+
+
 
     }
 
-    handleChange(e) {
+    async handleChange(e) {
+
+        if (e.target.name == "provincia") {
+            let provinciaBuscar = e.target.value
+            console.log("https://apis.datos.gob.ar/georef/api/municipios?provincia=" + provinciaBuscar + "&campos=id,nombre&max=100")
+            await fetch("https://apis.datos.gob.ar/georef/api/municipios?provincia=" + provinciaBuscar + "&campos=id,nombre&max=100")
+                .then(response => response.json())
+                .then(function (data) {
+
+                    console.log("La data es: " + data.municipios)
+                    localidadApiantes = data.municipios
+                    //this.setState.localidadApi = data.municipios
+
+                })
+                this.setState({
+                    localidadApi: localidadApiantes
+                })
+        }
+
+
 
         this.setState(
             {
@@ -90,6 +140,8 @@ class RegistrarUsuario extends React.Component {
 
             }
         )
+
+
     }
 
     handleSubmit = async event => {
@@ -126,7 +178,7 @@ class RegistrarUsuario extends React.Component {
             }
             console.log(config.body)
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona/crear', config)
+            let res = await fetch('http://localhost:8080/persona/crear', config)
             let json = await res.json()
             console.log(json)
             this.setState({
@@ -217,31 +269,50 @@ class RegistrarUsuario extends React.Component {
                             <select id='pais' value={this.state.pais.value} onChange={this.handleChange} name='pais' class="form-control"  >
                                 <option selected>Sin definir</option>
                                 <option value={1}>Argentina</option>
-                                <option value={2}>Chile</option>
-                                <option value={3}>Uruguay</option>
-                                <option value={4}>Paraguay</option>
-                                <option value={5}>Brasil</option>
-                                <option value={6}>Bolivia</option>
-                                <option value={7}>Ecuador</option>
-                                <option value={8}>Peru</option>
-                                <option value={9}>Mexico</option>
                             </select>
                             {errors.pais && <span className='error'>{errors.pais}</span>}
                         </div>
                     </div>
-                    <div class="form-group" >
-                        <label for="inputEmail4" className='label_proyecto'>Provincia</label>
-                        <input name='provincia' type="text" class="form-control" id="provincia"
-                            value={this.state.provincia.value} onChange={this.handleChange} placeholder="Buenos Aires,...."
-                        ></input>
-                        {errors.provincia && <span className='error'>{errors.provincia}</span>}
+                    <div class="form-row">
+                        <div class='label_proyecto'>
+                            <label for="inputState" className='label_proyecto'>Provincia</label>
+                            <select id='provincia' value={this.state.provincia.value} onChange={this.handleChange} name='provincia' class="form-control"  >
+                                <option selected>Sin definir</option>
+                                {
+                                    provincia.map(pro => {
+                                        return (
+
+                                            <option value={pro}>{pro}</option>
+
+                                        )
+                                    })
+                                }
+                            </select>
+                            {errors.provincia && <span className='error'>{errors.provincia}</span>}
+                        </div>
                     </div>
-                    <div class="form-group" >
-                        <label for="inputEmail4" className='label_proyecto'>Localidad</label>
-                        <input name='localidad' type="text" class="form-control" id="localidad"
-                            value={this.state.localidad.value} onChange={this.handleChange} placeholder="San Martin,.."
-                        ></input>
-                        {errors.localidad && <span className='error'>{errors.localidad}</span>}
+                    <div class="form-row">
+                        <div class='label_proyecto'>
+                            <label for="inputState" className='label_proyecto'>Localidad</label>
+                            <select id='localidad' value={this.state.localidad.value} onChange={this.handleChange} name='localidad' class="form-control"  >
+                                <option selected>Sin definir</option>
+                                
+                                {
+                                    localidadApiantes?.map(loc => {
+                                        return (
+
+                                            <option value={loc.nombre}>{loc.nombre}</option>
+
+                                        )
+                                        
+                                    })
+                                
+                                }
+            
+
+                            </select>
+                            {errors.localidad && <span className='error'>{errors.localidad}</span>}
+                        </div>
                     </div>
                     <div class="form-group" >
                         <label for="inputEmail4" className='label_proyecto'>Perfil Externo</label>
@@ -249,6 +320,11 @@ class RegistrarUsuario extends React.Component {
                             value={this.state.perfilExterno.value} onChange={this.handleChange} placeholder="Perfil linkldn, Git,.."
                         ></input>
                         {errors.perfilExterno && <span className='error'>{errors.perfilExterno}</span>}
+                    </div>
+                    <div class='label_proyecto'>
+                        <label for="inputAddress" className='label_proyecto'>Numero de celular</label>
+                        <input id="numeroCelular" value={this.state.numeroCelular.value} onChange={this.handleChange} name='numeroCelular' type="number" class="form-control" placeholder="sin 54 ni 15"></input>
+                        {errors.numeroCelular && <span className='error'>{errors.numeroCelular}</span>}
                     </div>
                     <div class="form-row">
                         <div class='label_proyecto'>
@@ -261,9 +337,35 @@ class RegistrarUsuario extends React.Component {
                                 <option value={4}>Quiero ser inversor</option>
                                 <option value={5}>Busco trabajo</option>
                                 <option value={6}>Quiero aprender</option>
-                                <option value={6}>Empleador</option>
+                                <option value={7}>Empleador</option>
                             </select>
                             {errors.personaRoles && <span className='error'>{errors.personaRoles}</span>}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class='label_proyecto'>
+                            <label for="inputState" className='label_proyecto'>Categoria interesada</label>
+                            <select id='categoria' value={this.state.categoria.value} onChange={this.handleChange} name='categoria' class="form-control"  >
+                                <option selected value={0}>Categoria</option>
+                                <option value={1}>VIDEOJUEGOS</option>
+                                <option value={2}>APLICACIONES MOVILES</option>
+                                <option value={3}>APLICACIONES WEB</option>
+                                <option value={4}>EMPLEOS</option>
+                                <option value={5}>INVERSIONES</option>
+                                <option value={6}>COMMUNITY MANAGER</option>
+                            </select>
+                            {errors.categoria && <span className='error'>{errors.categoria}</span>}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class='label_proyecto'>
+                            <label for="inputState" className='label_proyecto'>Es empresa</label>
+                            <select id='esEmpresa' value={this.state.esEmpresa.value} onChange={this.handleChange} name='esEmpresa' class="form-control"  >
+                                <option selected value={0}>SIN DEFINIR</option>
+                                <option value={"NO"}>NO</option>
+                                <option value={"SI"}>SI</option>
+                            </select>
+                            {errors.esEmpresa && <span className='error'>{errors.esEmpresa}</span>}
                         </div>
                     </div>
                     <label for="inputState" className='label_proyecto'>Foto de perfil</label>
@@ -292,14 +394,12 @@ class RegistrarUsuario extends React.Component {
                         <ToastContainer />
                     </div>
                 </form>
-            </section>
+            </section >
 
         )
 
     }
 }
-
-
 
 export default RegistrarUsuario;
 

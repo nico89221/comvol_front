@@ -8,7 +8,7 @@ import FilaIntegrantes from '../components/FilaIntegrantes';
 function Integrantes(props) {
 
     let{id}= useParams();
-    let url = 'https://apicomvolbackend-production.up.railway.app/persona_proyecto/detalle_proyecto_persona?id_proyecto='+id+'&pagina=0&cantidad=20';
+    let url = 'http://localhost:8080/persona_proyecto/detalle_proyecto_persona?id_proyecto='+id+'&pagina=0&cantidad=20';
 
     const [listPostulacion, setlistPostulacion] = useState([]);
 

@@ -7,15 +7,21 @@ export const loginUser = (userData) => dispatch => {
     console.log(userData)
 
     return new Promise((resolve, reject) => {
-        axios.post('https://apicomvolbackend-production.up.railway.app/persona/inicio_sesion', userData, {
+        axios.post('http://localhost:8080/persona/inicio_sesion', userData, {
             headers: { 'Accept': 'application/json', 'Content-type': 'application/json' }
         }).then(response => {
             console.log("por el response")
             localStorage.setItem('id', response.data.id)
             localStorage.setItem('tipoUsuario', response.data.tipoUsuario)
+            localStorage.setItem('esEmpresa',response.data.esEmpresa)
             dispatch(setCurrentUser({user:response.data.id,loggedIn:true}));
             resolve(response)
-            window.location = '/';
+            if(response.data.esEmpresa == "NO"){
+                window.location = '/proyectos_interes'
+            }else{
+                window.location = '/buscar_perfiles'
+            }
+            
         }).catch(error => {
             reject(error)
             console.log("tiro 400")

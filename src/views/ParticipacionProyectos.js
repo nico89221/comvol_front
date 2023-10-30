@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import TarjetaParticipacion from '../components/TarjetaParticipacion';
+let urlBuscarProyecto = '../buscar_proyectos'
 
 
 function ParticipacionProyectos() {
 
     const [listParticipacion, setListParticipacion] = useState([]);
 
-    if (listParticipacion.length == 0) {
+    useEffect(()=>{
 
-        fetch("https://apicomvolbackend-production.up.railway.app/persona_proyecto/detalle_proyecto_integrante?id_persona=   "+localStorage.getItem("id")+"&pagina=0&cantidad=20")
+        fetch("http://localhost:8080/persona_proyecto/detalle_proyecto_integrante?id_persona=   "+localStorage.getItem("id")+"&pagina=0&cantidad=20")
             .then(response => response.json())
             .then(function (data) {
 
@@ -18,10 +19,9 @@ function ParticipacionProyectos() {
                     ...data.content,
                 ])
 
-            })
-
-
-    }
+            },[])
+    },[])
+    
 
     useEffect(()=>{
 
@@ -33,7 +33,9 @@ function ParticipacionProyectos() {
         return contenido = <p>cargando</p>;
     }
     else {
-        return contenido =
+
+        if(listParticipacion.length != 0){
+            return contenido =
 
             <section className="principal">
 
@@ -45,6 +47,17 @@ function ParticipacionProyectos() {
                 }
 
             </section>
+        }else{
+            return contenido =
+
+            <section className="principal">
+
+                <h2 className='titulo'><b>Aun no participas de ningun proyecto no te desanimes y segui buscando</b></h2>
+                <a class="btn btn-success" style={{fontSize:24,margin:24}} href={urlBuscarProyecto}>Buscar proyecto y postularse</a>
+
+            </section>
+        }
+        
 
 
     }

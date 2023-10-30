@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Select from "react-select";
+import axios from 'axios';
 
 const validate = values => {
     const errors = {}
@@ -11,6 +13,9 @@ const validate = values => {
         errors.tituloProyecto = "Este campo es obligatorio"
     }
     if (values.descripcionProyecto == "") {
+        errors.descripcionProyecto = "Este campo es obligatorio"
+    }
+    if (values.puestoSolicitado == "") {
         errors.descripcionProyecto = "Este campo es obligatorio"
     }
     if (values.limitePersonasProyecto <= 0) {
@@ -26,6 +31,18 @@ const validate = values => {
     return errors
 }
 
+const options = [
+    { value: '1', label: 'Programador' },
+    { value: '2', label: 'QA' },
+    { value: '3', label: 'Analista' },
+    { value: '4', label: 'Quiero ser inversor' },
+    { value: '5', label: 'Busco trabajo' },
+    { value: '6', label: 'Quiero aprender' },
+    { value: '7', label: 'Empleador' }
+];
+
+
+
 class CrearProyecto extends React.Component {
 
     constructor(props) {
@@ -33,14 +50,18 @@ class CrearProyecto extends React.Component {
         this.state = {
             tituloProyecto: "",
             descripcionProyecto: "",
+            puestoSolicitado: "",
             limitePersonasProyecto: 0,
             idCategoriaProyecto: 0,
             idFormaDePago: 0,
             esEmpresa: false,
             idResponsable: localStorage.getItem('id'),
-            urlImagenProyecto: "https://main--stellar-bublanina-20e9ef.netlify.app//img/comvol.jpg",
+            urlImagenProyecto: "http://localhost:3000/img/comvol.jpg",
             loading: false,
-            errors: {}
+            selectedOption: null,
+            proyectoRoles: [],
+            errors: {},
+            selectedFile: null
 
         }
 
@@ -50,6 +71,10 @@ class CrearProyecto extends React.Component {
     }
 
     handleChange(e) {
+        console.log(e.target.name)
+        if (e.target.name == "imagen") {
+            console.log(e.target.result)
+        }
 
         this.setState(
             {
@@ -60,6 +85,25 @@ class CrearProyecto extends React.Component {
             }
         )
     }
+
+    onFileChange = event => {
+
+        // Update the state
+        this.setState({ selectedFile: event.target.files[0] });
+        console.log(this.state.selectedFile)
+
+    };
+
+    handleChangeSelect = (selectedOption) => {
+        let personaRolesFinal = []
+        this.setState({ selectedOption }, () =>
+            console.log()
+        );
+        selectedOption.map(sel => {
+            personaRolesFinal.push(sel.value)
+        })
+        this.setState({ proyectoRoles: personaRolesFinal })
+    };
 
     handleSubmit = async event => {
         this.setState({
@@ -84,6 +128,7 @@ class CrearProyecto extends React.Component {
         }
 
         try {
+
             let config = {
                 method: 'POST',
                 headers: {
@@ -95,7 +140,7 @@ class CrearProyecto extends React.Component {
             }
             console.log(config.body)
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/proyecto/crear', config)
+            let res = await fetch('http://localhost:8080/proyecto/crear', config)
             let json = await res.json()
             this.setState({
                 loading: false
@@ -135,9 +180,26 @@ class CrearProyecto extends React.Component {
                             <label for="exampleFormControlTextarea1" className='label_proyecto'>Descripcion</label>
                             <textarea id='descripcionProyecto' value={this.state.descripcionProyecto.value} onChange={this.handleChange}
                                 name='descripcionProyecto' class="form-control" rows="3" placeholder='Descripcion breve del proyecto'
-                            maxLength={200}></textarea>
+                                maxLength={200}></textarea>
                             {errors.descripcionProyecto && <span className='error'>{errors.descripcionProyecto}</span>}
                         </div>
+                        <div class='label_proyecto' >
+                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Puesto solicitado</label>
+                            <textarea id='puestoSolicitado' value={this.state.puestoSolicitado.value} onChange={this.handleChange}
+                                name='puestoSolicitado' class="form-control" rows="3" placeholder='Descripcion breve del/los puestos solicitado/s'
+                                maxLength={200}></textarea>
+                            {errors.puestoSolicitado && <span className='error'>{errors.puestoSolicitado}</span>}
+                        </div>
+                    </div>
+                    <div>
+                        <label for="exampleFormControlTextarea1" className='label_proyecto'>Puesto solicitado</label>
+                        <Select
+                            isMulti
+                            value={this.state.selectedOption}
+                            onChange={this.handleChangeSelect}
+                            options={options}
+                            name='selectedOption'
+                        />
                     </div>
                     <div class='label_proyecto'>
                         <label for="inputAddress" className='label_proyecto'>Cantidad de Integrantes necesarios</label>
@@ -173,10 +235,10 @@ class CrearProyecto extends React.Component {
                         </div>
                     </div>
                     <label for="inputState" className='label_proyecto'>Imagen del proyecto</label>
-                        <div class="input-group mb-3 foto">
-                            <input type="file" class="form-control" id="inputGroupFile02" accept='image/*'></input>
-                            <label class="input-group-text" for="inputGroupFile02" >jpg,png</label>
-                        </div>
+                    <div class="input-group mb-3 foto">
+                        <input type="file" class="form-control" id="imagen" name='imagen' accept='image/*' onChange={this.onFileChange}></input>
+                        <label class="input-group-text" for="inputGroupFile02" >jpg,png</label>
+                    </div>
                     <div class="form-group">
                     </div>
                     <div class='btn-proyecto'>

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 function VistaProyectoCreado() {
 
     let { id } = useParams();
-    let url = 'https://apicomvolbackend-production.up.railway.app/proyecto/detalle?id_proyecto=' + id;
+    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
 
     const [detalle, setDetalle] = useState(null);
 
@@ -45,6 +45,12 @@ function VistaProyectoCreado() {
                             <label for="exampleFormControlTextarea1" className='label_proyecto'>Descripcion</label>
                             <textarea id='descripcionProyecto' value={detalle.descripcionProyecto}
                                 name='descripcionProyecto' class="form-control" rows="3" placeholder='Descripcion breve del proyecto'
+                            ></textarea>
+                        </div>
+                        <div class='label_proyecto' >
+                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Puesto Solicitado</label>
+                            <textarea id='puestoSolicitado' value={detalle.puestoSolicitado}
+                                name='puestoSolicitado' class="form-control" rows="3" placeholder='Descripcion breve del/los puestos solicitado/s'
                             ></textarea>
                         </div>
                     </div>

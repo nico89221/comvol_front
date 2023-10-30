@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function VerPostulaciones(props) {
 
     let{id}= useParams();
-    let url = 'https://apicomvolbackend-production.up.railway.app/persona_proyecto/detalle_postulacion?id_proyecto='+id+'&pagina=0&cantidad=20' ;
+    let url = 'http://localhost:8080/persona_proyecto/detalle_postulacion?id_proyecto='+id+'&pagina=0&cantidad=20' ;
 
     const [listPostulacion, setlistPostulacion] = useState([]);
 

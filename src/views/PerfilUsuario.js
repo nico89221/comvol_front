@@ -6,18 +6,19 @@ function PerfilUsuario() {
 
     console.log(localStorage.getItem('id'))
 
-   if (localStorage.getItem('id')) {
-       console.log("existe")
+    if (localStorage.getItem('id')) {
+        console.log("existe")
     } else {
         window.location = '/'
     }
 
     const delay = ms => new Promise(
         resolve => setTimeout(resolve, ms)
-      );
+    );
 
-    let url = 'https://apicomvolbackend-production.up.railway.app/persona/detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'http://localhost:8080/persona/detalle?id_persona=' + localStorage.getItem('id');
     let urlEditarUsuario = "./perfil/editar";
+    let urlContrasena = './modificar_contrasena';
 
 
     const [perfil, setPerfil] = useState(null);
@@ -29,6 +30,7 @@ function PerfilUsuario() {
                 if (data.descripcion == "El usuario ya se encuentra dado de baja") {
                     localStorage.removeItem('id')
                     localStorage.removeItem('tipoUsuario')
+                    localStorage.removeItem('esEmpresa')
                     window.location = '/'
                 } else {
                     setPerfil(data)
@@ -52,16 +54,17 @@ function PerfilUsuario() {
 
             }
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona/baja?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('http://localhost:8080/persona/baja?id_persona=' + localStorage.getItem('id'), config)
             console.log(res)
             if (res.status == 200) {
                 localStorage.removeItem('id')
                 localStorage.removeItem('tipoUsuario')
+                localStorage.removeItem('esEmpresa')
                 window.location = '/'
-            }else{
+            } else {
                 window.location = '/'
             }
-            
+
 
         } catch (error) {
 
@@ -84,7 +87,7 @@ function PerfilUsuario() {
 
             }
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona/baja_suscripcion?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('http://localhost:8080/persona/baja_suscripcion?id_persona=' + localStorage.getItem('id'), config)
             console.log(res)
             if (res.status == 200) {
                 toast.success('Su suscripcion ha sido cancelada', {
@@ -97,7 +100,7 @@ function PerfilUsuario() {
                     progress: undefined,
                     theme: "colored",
                 });
-                
+
             }
 
             await delay(1600);
@@ -120,13 +123,13 @@ function PerfilUsuario() {
 
         if (perfil && perfil.suscripcion == true) {
             console.log("verdadero")
-            btnSus = 
-            <div class='contenedor-suscripcion'>
-                <button type='button' class="btn btn-danger" onClick={bajaSuscripcion}>Cancelar suscripcion</button>
-            </div>
-        } 
+            btnSus =
+                <div class='contenedor-suscripcion'>
+                    <button type='button' class="btn btn-danger" onClick={bajaSuscripcion}>Cancelar suscripcion</button>
+                </div>
+        }
 
-        if(perfil && perfil.suscripcion == false) {
+        if (perfil && perfil.suscripcion == false) {
             console.log("falso")
             btnSus = <p></p>
         }
@@ -139,7 +142,7 @@ function PerfilUsuario() {
                     <div class="form-row">
                         <div class="form-group" >
                             <div class='img-div'>
-                                <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/user.jpg' alt="project-image" class="img-detalle-vista"></img>
+                                <img src='http://localhost:3000/img/user.jpg' alt="project-image" class="img-detalle-vista"></img>
                             </div>
                             <label for="inputEmail4" className='label_proyecto'>Nombre</label>
                             <input name='nombre' type="text" class="form-control" id="nombre"
@@ -194,6 +197,26 @@ function PerfilUsuario() {
                                     )
                                 })
                             }
+                        </div>
+                        <div class="form-group" >
+                            <label for="inputEmail4" className='label_proyecto'>Categoria de interes</label>
+                            <input name='descripcionCategoria' type="text" class="form-control" id="descripcionCategoria"
+                                value={perfil.descripcionCategoria} ></input>
+                        </div>
+                        <div class="form-group" >
+                            <label for="inputEmail4" className='label_proyecto'>Numero de celular</label>
+                            <input name='numeroCelular' type="text" class="form-control" id="numeroCelular"
+                                value={perfil.numeroCelular} ></input>
+                        </div>
+                        <div class="form-group" >
+                            <label for="inputEmail4" className='label_proyecto'>Es empresa</label>
+                            <input name='esEmpresa' type="text" class="form-control" id="esEmpresa"
+                                value={perfil.esEmpresa} ></input>
+                        </div>
+                        <div class="form-group" >
+                            <div class='contenedor-suscripcion'>
+                                <a type='button' class="btn btn-primary" href={urlContrasena}>Cambiar contraseña</a>
+                            </div>
                         </div>
                         {btnSus}
                         <div class='contenedor-perfil'>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, event } from 'react';
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Select from "react-select";
 
 
 const validate = event => {
@@ -16,6 +17,9 @@ const validate = event => {
     if (event.target.limitePersonasProyecto.value <= 0) {
         errors.limitePersonasProyecto = "La cantidad de intregantes tiene que ser mayor a 0"
     }
+    if (event.target.puestoSolicitado.value == "") {
+        errors.puestoSolicitado = "Este campo es obligatorio"
+    }
 
     return errors
 }
@@ -24,11 +28,23 @@ const validate = event => {
 function EditarProyecto() {
 
     let { id } = useParams();
-    let url = 'https://apicomvolbackend-production.up.railway.app/proyecto/detalle?id_proyecto=' + id;
+    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
     const [detalle, setDetalle] = useState("");
     const [detalleFinal, setDetalleFinal] = useState("");
     const [errors, setErrors] = useState();
+    const [selectedOption, setSelectedOption] = useState();
     let urlProyectos = "/mis_proyectos";
+    let listRol;
+    let personaRolesFinal = []
+    const options = [
+        { value: '1', label: 'Programador' },
+        { value: '2', label: 'QA' },
+        { value: '3', label: 'Analista' },
+        { value: '4', label: 'Quiero ser inversor' },
+        { value: '5', label: 'Busco trabajo' },
+        { value: '6', label: 'Quiero aprender' },
+        { value: '7', label: 'Empleador' }
+    ];
 
     useEffect(() => {
         fetch(url)
@@ -46,15 +62,37 @@ function EditarProyecto() {
             {
                 tituloProyecto: detalle.tituloProyecto,
                 descripcionProyecto: detalle.descripcionProyecto,
+                puestoSolicitado: detalle.puestoSolicitado,
                 idCategoriaProyecto: detalle.idCategoria,
                 idEstadoProyecto: detalle.idEstado,
                 limitePersonasProyecto: detalle.limitePersonasProyecto,
                 urlImagenProyecto: detalle.urlImagenProyecto,
                 idFormaDePago: detalle.idFormaDePago,
                 esEmpresa: detalle.esEmpresa,
-                razonSocial: detalle.razonSocial
+                razonSocial: detalle.razonSocial,
+                proyectoRoles:selectedOption == null ?validar():selectedOption.map(sel => {
+                    return sel.value
+                })
             })
     }, [detalle])
+
+
+    
+        let validar = () => {
+            let rolFinal = []
+    
+            if (detalle && detalle.proyectoRoles && typeof (detalle.proyectoRoles) === 'object') {
+                console.log("entra en validar")
+                detalle.proyectoRoles.map(rol => {
+                        console.log("entra en type of")
+                        rolFinal.push(rol.idRol)
+                    
+                })
+                return rolFinal
+            }
+            return [detalle.proyectoRoles]
+        }
+        
 
     let handleChange = (e) => {
 
@@ -66,13 +104,27 @@ function EditarProyecto() {
 
     }
 
+    let handleChangeSelect = (selectedOption) => {
+       
+        setSelectedOption(selectedOption);
+        selectedOption.map(sel => {
+            personaRolesFinal.push(sel.value)
+        })
+        console.log(personaRolesFinal)
+        setDetalleFinal(
+            {
+                ...detalleFinal,
+                proyectoRoles: personaRolesFinal
+            })
+    };
+
 
     let handleSubmit = async event => {
 
         event.preventDefault();
 
         const result = validate(event)
-      
+
         console.log(result)
         if (Object.keys(result).length) {
             toast.warn('Campos invalidos o vacios', {
@@ -84,9 +136,9 @@ function EditarProyecto() {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
-                });
+            });
 
-            return setErrors( result )
+            return setErrors(result)
         }
 
 
@@ -100,9 +152,12 @@ function EditarProyecto() {
                 },
                 body: JSON.stringify(detalleFinal)
 
+
             }
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/proyecto/editar?id_proyecto=' + id, config)
+            console.log(config.body)
+
+            let res = await fetch('http://localhost:8080/proyecto/editar?id_proyecto=' + id, config)
             let json = await res.json()
 
             window.location = '/mis_proyectos';
@@ -139,6 +194,23 @@ function EditarProyecto() {
                             <textarea id='descripcionProyecto' value={detalle.descripcionProyecto} onChange={handleChange}
                                 name='descripcionProyecto' class="form-control" rows="3" placeholder='Descripcion breve del proyecto'
                             ></textarea>
+                        </div>
+                        <span className='error'>{errors && errors.descripcionProyecto}</span>
+                        <div class='label_proyecto' >
+                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Puesto Solicitado</label>
+                            <textarea id='puestoSolicitado' value={detalle.puestoSolicitado} onChange={handleChange}
+                                name='puestoSolicitado' class="form-control" rows="3" placeholder='Descripcion breve del/los puestos solicitado/s'
+                            ></textarea>
+                        </div>
+                        <div>
+                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Puesto solicitado</label>
+                            <Select
+                                isMulti
+                                value={selectedOption}
+                                onChange={handleChangeSelect}
+                                options={options}
+                                name='selectedOption'
+                            />
                         </div>
                         <span className='error'>{errors && errors.descripcionProyecto}</span>
                     </div>

@@ -24,11 +24,12 @@ import MisPostulaciones from "./views/MisPostulaciones";
 import ParticipacionProyectos from "./views/ParticipacionProyectos";
 import BuscadorPerfil from "./views/BuscadorPerfil";
 import FormaDePagoCard from "./components/FormaDePagoCard";
-
-
-
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Yellowtail&display=swap" rel="stylesheet"></link>
+import ProyectosInteres from "./views/ProyectosInteres";
+import QuienesSomos from "./views/QuienesSomos";
+import CambioContrasena from "./views/CambioContrasena";
+import Footer from "./layouts/Footer";
+import EnviarForm from "./views/EnviarForm";
+import { Reclutar } from "./views/Reclutar";
 
 
 function App() {
@@ -60,9 +61,15 @@ function App() {
             <Route exact path="/participacion_proyectos" Component={ParticipacionProyectos}></Route>
             <Route exact path="/buscar_perfiles" Component={BuscadorPerfil}></Route>
             <Route exact path="/forma_pago" Component={FormaDePagoCard}></Route>
+            <Route exact path="/proyectos_interes" Component={ProyectosInteres}></Route>
+            <Route exact path="/quienes_somos" Component={QuienesSomos}></Route>
+            <Route exact path="/modificar_contrasena" Component={CambioContrasena}></Route>
+            <Route exact path="/enviar_form" Component={EnviarForm}></Route>
+            <Route exact path="/recruiting" Component={Reclutar}></Route>
           </Routes>
         </Container>
       </Router>
+      <Footer></Footer>
     </Provider>
 
   );

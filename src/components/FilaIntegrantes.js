@@ -5,9 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import {
     EmailIcon,
     EmailShareButton,
-    WhatsappIcon,
-    WhatsappShareButton,
   } from "react-share";
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function FilaIntegrantes(props) {
 
@@ -32,7 +32,7 @@ function FilaIntegrantes(props) {
 
     const padreAHijo = () => {
         estableceDatos(props);
-        console.log(datos);
+        console.log(props);
     }
 
    
@@ -50,7 +50,7 @@ function FilaIntegrantes(props) {
             }
             console.log(config.body)
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona_proyecto/finalizar_persona_proyecto?id_persona_proyecto='+props.idPersonaProyecto, config)
+            let res = await fetch('http://localhost:8080/persona_proyecto/finalizar_persona_proyecto?id_persona_proyecto='+props.idPersonaProyecto, config)
             let json = await res.json()
             console.log(res)
             console.log(json)
@@ -92,6 +92,7 @@ function FilaIntegrantes(props) {
         resolve => setTimeout(resolve, ms)
     );
 
+    let whatsapp = "https://wa.me/"+props.numeroCelular+"?text=Hola%20"+props.nombre+"%20te%20contacto%20desde%20la%20web%20de%20comvol%20por%20una%20postulacion%20tuya"
 
 
     return (
@@ -103,9 +104,7 @@ function FilaIntegrantes(props) {
             <td>{props.fechaAltaPersonaAlProyecto}</td>
             <td>{props.fechaBajaPersonaAlProyecto}</td> 
             <td><EmailShareButton quote={props.email} subject={props.email} url={props.email} body={props.email} email={props.email}><EmailIcon size={40} round={true}></EmailIcon></EmailShareButton></td> 
-            <td><WhatsappShareButton url={props.email} title='1130469333'>
- <WhatsappIcon type="button" size={40} round={true} />
-</WhatsappShareButton></td>
+            <td><a aria-label="Chat on WhatsApp" href={whatsapp}target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} style={{color: "#37c011"}} size="2x"  /></a></td>
             {botonRechazar}
         </tr>
 

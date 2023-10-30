@@ -2,30 +2,31 @@ import React, { useState, useEffect, event } from 'react';
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { provincia } from '../js/ConstanteP'
 
 const validate = event => {
     const errors = {}
 
     console.log(event.target.nombre.value)
-        if (event.target.nombre.value == "") {
-            errors.nombre = "Este campo es obligatorio"
-        }
+    if (event.target.nombre.value == "") {
+        errors.nombre = "Este campo es obligatorio"
+    }
 
-        if (event.target.provincia.value == "") {
-            errors.provincia = "Este campo es obligatorio"
-        }
+    if (event.target.provincia.value == "") {
+        errors.provincia = "Este campo es obligatorio"
+    }
 
-        if (event.target.acercaDe.value == "") {
-            errors.acercaDe = "Este campo es obligatorio"
-        }
+    if (event.target.acercaDe.value == "") {
+        errors.acercaDe = "Este campo es obligatorio"
+    }
 
-        if (event.target.localidad.value == "") {
-            errors.localidad = "Este campo es obligatorio"
-        }
+    if (event.target.localidad.value == "") {
+        errors.localidad = "Este campo es obligatorio"
+    }
 
-        if (event.target.perfilExterno.value == "") {
-            errors.perfilExterno = "Este campo es obligatorio"
-        }
+    if (event.target.perfilExterno.value == "") {
+        errors.perfilExterno = "Este campo es obligatorio"
+    }
 
     return errors
 }
@@ -33,12 +34,15 @@ const validate = event => {
 
 function EditarUsuario() {
 
-    let url = 'https://apicomvolbackend-production.up.railway.app/persona/detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'http://localhost:8080/persona/detalle?id_persona=' + localStorage.getItem('id');
     const [perfil, setPerfil] = useState("");
     const [perfilFinal, setPerfilFinal] = useState();
+    const [localidad, setLocalidad] = useState([]);
     let listRol;
     let urlPerfil = '/perfil'
     const [errors, setErrors] = useState();
+    const pro = provincia;
+    let localidadApiantes = []
 
     useEffect(() => {
         fetch(url)
@@ -51,6 +55,23 @@ function EditarUsuario() {
 
     }, [])
 
+    useEffect(() => {
+
+        let url = "https://apis.datos.gob.ar/georef/api/municipios?provincia=" + perfil.provincia + "&campos=id,nombre&max=100"
+
+        fetch(url)
+            .then(response => response.json())
+            .then((data) => {
+
+                setLocalidad(data.municipios)
+
+            })
+            console.log("useEffect localidad")
+            console.log(localidad)
+
+    },[perfil])
+
+
     if (perfil && perfil.roles) {
         listRol = perfil.roles.map(rol => rol.idRol)
         console.log(typeof (perfil.nombre))
@@ -59,19 +80,19 @@ function EditarUsuario() {
     let rolFinal
 
     let validar = () => {
-        
-        if(perfil && perfil.personaRoles && typeof(perfil.personaRoles) === 'object'){
-        console.log("entra en validar")
-        perfil.personaRoles.map(rol => {
-            if (typeof (rol) == 'string') {
-                console.log("entra en type of")
-                console.log(listRol)
-                rolFinal = listRol
-            }
-        })
-        return listRol
-    }
-    return [perfil.personaRoles]
+
+        if (perfil && perfil.personaRoles && typeof (perfil.personaRoles) === 'object') {
+            console.log("entra en validar")
+            perfil.personaRoles.map(rol => {
+                if (typeof (rol) == 'string') {
+                    console.log("entra en type of")
+                    console.log(listRol)
+                    rolFinal = listRol
+                }
+            })
+            return listRol
+        }
+        return [perfil.personaRoles]
     }
 
 
@@ -84,11 +105,16 @@ function EditarUsuario() {
                 apellido: perfil.apellido,
                 email: perfil.email,
                 acercaDe: perfil.acercaDe,
-                pais: perfil.pais,
+                idPais: perfil.idPais,
                 provincia: perfil.provincia,
                 localidad: perfil.localidad,
                 perfilExterno: perfil.perfilExterno,
-                personaRoles: validar()
+                personaRoles: validar(),
+                esEmpresa: perfil.esEmpresa,
+                numeroCelular: perfil.numeroCelular,
+                idCategoria: perfil.idCategoria
+                
+
             })
     }, [perfil])
 
@@ -96,9 +122,11 @@ function EditarUsuario() {
 
     useEffect(() => {
 
+        console.log("perfilFinal")
         console.log(perfilFinal)
     }, [perfilFinal])
 
+  
     let handleChange = (e) => {
 
         console.log("handle")
@@ -115,6 +143,8 @@ function EditarUsuario() {
 
     let handleSubmit = async (event) => {
 
+        console.log("Comprobar perfil")
+        console.log(perfil)
         event.preventDefault();
         const result = validate(event)
         if (Object.keys(result).length) {
@@ -127,8 +157,8 @@ function EditarUsuario() {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
-                });
-                return setErrors( result )
+            });
+            return setErrors(result)
         }
 
 
@@ -148,7 +178,7 @@ function EditarUsuario() {
             console.log(config.body)
             console.log(localStorage.getItem('id'))
 
-            let res = await fetch('https://apicomvolbackend-production.up.railway.app/persona/editar?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('http://localhost:8080/persona/editar?id_persona=' + localStorage.getItem('id'), config)
             let json = await res.json()
 
             window.location = '/perfil'
@@ -167,7 +197,7 @@ function EditarUsuario() {
     if (perfil == null || perfil.personaRoles == null) {
         return (contenido = <p>cargando</p>);
     } else {
-        
+
         return (
             <section className='section-form'>
                 <form onSubmit={handleSubmit} className='form-proyecto'>
@@ -196,28 +226,38 @@ function EditarUsuario() {
                     <div class="form-row">
                         <div class='label_proyecto'>
                             <label for="inputState" className='label_proyecto'>Pais</label>
-                            <select id='pais' value={perfil.pais} onChange={handleChange} name='pais' class="form-control"  >
+                            <select id='idPais' value={perfil.idPais} onChange={handleChange} name='idPais' class="form-control"  >
                                 <option value={1}>Argentina</option>
-                                <option value={2}>Chile</option>
-                                <option value={3}>Uruguay</option>
-                                <option value={4}>Paraguay</option>
-                                <option value={5}>Brasil</option>
-                                <option value={6}>Bolivia</option>
-                                <option value={7}>Ecuador</option>
-                                <option value={8}>Peru</option>
-                                <option value={9}>Mexico</option>
                             </select>
                         </div>
-                        <div class="form-group" >
-                            <label for="inputEmail4" className='label_proyecto'>Provincia</label>
-                            <input name='provincia' type="text" class="form-control" id="provincia"
-                                value={perfil.provincia} onChange={handleChange}></input>
+                        <div class='label_proyecto'>
+                            <label for="inputState" className='label_proyecto'>Provincia</label>
+                            <select id='provincia' value={perfil.provincia} onChange={handleChange} name='provincia' class="form-control"  >
+                                {
+                                    pro.map(provincia => {
+                                        return (
+
+                                            <option value={provincia}>{provincia}</option>
+
+                                        )
+                                    })
+                                }
+                            </select>
                         </div>
                         <span className='error'>{errors && errors.provincia}</span>
-                        <div class="form-group" >
-                            <label for="inputEmail4" className='label_proyecto'>Localidad</label>
-                            <input name='localidad' type="text" class="form-control" id="localidad"
-                                value={perfil.localidad} onChange={handleChange}></input>
+                        <div class='label_proyecto'>
+                            <label for="inputState" className='label_proyecto'>localidad</label>
+                            <select id='localidad' value={perfil.localidad} onChange={handleChange} name='localidad' class="form-control"  >
+                                {
+                                    localidad.map(loc => {
+                                        return (
+
+                                            <option value={loc.nombre}>{loc.nombre}</option>
+
+                                        )
+                                    })
+                                }
+                            </select>
                         </div>
                         <span className='error'>{errors && errors.localidad}</span>
                         <div class="form-group" >
@@ -241,6 +281,36 @@ function EditarUsuario() {
                                 </select>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class='label_proyecto'>
+                                <label for="inputState" className='label_proyecto'>Elegir nuevo Categoria de interes</label>
+                                <select id='idCategoria' onChange={handleChange} name='idCategoria' class="form-control"  >
+                                    <option selected>Sin definir</option>
+                                    <option value={1}>VIDEOJUEGOS</option>
+                                    <option value={2}>APLICACIONES MOVILES</option>
+                                    <option value={3}>APLICACIONES WEB</option>
+                                    <option value={4}>EMPLEOS</option>
+                                    <option value={5}>INVERSIONES</option>
+                                    <option value={6}>COMMUNITY MANAGER</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class='label_proyecto'>
+                                <label for="inputState" className='label_proyecto'>Es Empresa</label>
+                                <select id='esEmpresa' onChange={handleChange} name='esEmpresa' class="form-control"  >
+                                    <option selected>Sin definir</option>
+                                    <option value={"NO"}>NO</option>
+                                    <option value={"SI"}>SI</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label for="inputEmail4" className='label_proyecto'>Numero de celular</label>
+                            <input name='numeroCelular' type="number" class="form-control" id="numeroCelular"
+                                value={perfil.numeroCelular} onChange={handleChange}></input>
+                        </div>
+
                     </div>
                     <div class="form-group">
                     </div>

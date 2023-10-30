@@ -8,7 +8,8 @@ function BuscadorProyecto() {
     const [resultados, setResultados] = useState(null);
     const [buscar, setBuscar] = useState({
         categoria :"",
-        estado:""
+        estado:"",
+        rol:""
     });
 
     const search =
@@ -17,7 +18,7 @@ function BuscadorProyecto() {
     </span>
 
     useEffect(() => {
-        fetch("https://apicomvolbackend-production.up.railway.app/proyecto/filtrar?id_categoria=&id_estado=")
+        fetch("http://localhost:8080/proyecto/filtrar?id_categoria=&id_estado=&id_rol")
             .then(response => response.json())
             .then((data) => {
 
@@ -48,7 +49,7 @@ function BuscadorProyecto() {
         event.preventDefault()
       
         console.log(buscar)
-        let url = "https://apicomvolbackend-production.up.railway.app/proyecto/filtrar?id_categoria="+buscar.categoria+"&id_estado="+buscar.estado;
+        let url = "http://localhost:8080/proyecto/filtrar?id_categoria="+buscar.categoria+"&id_estado="+buscar.estado+"&id_rol="+buscar.rol;
         console.log(url)
         fetch(url)
             .then(response => response.json())
@@ -90,6 +91,18 @@ function BuscadorProyecto() {
                             <option value={2}>En desarollo</option>
                             <option value={3}>Cancelado</option>
                             <option value={4}>Finalizado</option>
+                        </select>
+                    </div>
+                    <div class='selector-proyecto'>
+                        <select class="form-control" aria-label="Default select example" id='rol' name='rol' onChange={handleChange}>
+                            <option selected value={0}>Rol</option>
+                            <option value={1}>Programador</option>
+                            <option value={2}>QA</option>
+                            <option value={3}>Analista</option>
+                            <option value={4}>Quiero ser inversor</option>
+                            <option value={5}>Busco trabajo</option>
+                            <option value={6}>Quiero aprender</option>
+                            <option value={7}>Empleador</option>
                         </select>
                     </div>
                     <div class='button-proyecto'>

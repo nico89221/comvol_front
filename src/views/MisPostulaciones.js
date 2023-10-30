@@ -6,10 +6,11 @@ import { useEffect } from 'react';
 function MisPostulaciones() {
 
     const [listPostulaciones, setListPostulaciones] = useState([]);
+    let urlBuscarProyecto = '../buscar_proyectos'
 
-    if (listPostulaciones.length == 0) {
+    useEffect(()=>{
 
-        fetch("https://apicomvolbackend-production.up.railway.app/persona_proyecto/detalle_postulacion_persona?id_persona="+localStorage.getItem("id")+"&pagina=0&cantidad=20")
+        fetch("http://localhost:8080/persona_proyecto/detalle_postulacion_persona?id_persona="+localStorage.getItem("id")+"&pagina=0&cantidad=20")
             .then(response => response.json())
             .then(function (data) {
 
@@ -18,22 +19,16 @@ function MisPostulaciones() {
                     ...data.content,
                 ])
 
-            })
-
-
-    }
-
-    useEffect(()=>{
-
-        console.log(listPostulaciones)
-    },[listPostulaciones])
+            },[])
+    },[])
 
     let contenido;
     if (listPostulaciones == null) {
         return contenido = <p>cargando</p>;
     }
     else {
-        return contenido =
+        if(listPostulaciones.length != 0){
+            return contenido =
 
             <section className="principal">
 
@@ -45,6 +40,19 @@ function MisPostulaciones() {
                 }
 
             </section>
+        }else{
+
+            return contenido =
+
+            <section className="principal">
+
+                <h2 className='titulo'><b>Aun no tienes postulaciones que estas esperando a buscar proyectos y postularte</b></h2>
+                <a class="btn btn-success" style={{fontSize:24,margin:24}} href={urlBuscarProyecto}>Buscar proyecto y postularse</a>
+
+            </section>
+
+        }
+        
 
 
     }
