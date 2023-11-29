@@ -24,9 +24,9 @@ function QuienesSomos() {
 
                 </div>
 
-                <h2 class="titulovideos" style={{ fontStyle: 'oblique' }}><b>Team</b><img src="http://localhost:3000/img/logo2.png" class="logo" alt="..." style={{ borderRadius: "18px", width: "70px", height: "70px", marginLeft: "15px" }} /></h2>
-                <img src='http://localhost:3000/img/user.jpg' alt="project-image" class="img-detalle-vista-equipo"></img>
-                <img src='http://localhost:3000/img/user.jpg' alt="project-image" class="img-detalle-vista-equipo"></img>
+                <h2 class="titulovideos" style={{ fontStyle: 'oblique' }}><b>Team</b><img src="https://main--stellar-bublanina-20e9ef.netlify.app//img/logo2.png" class="logo" alt="..." style={{ borderRadius: "18px", width: "70px", height: "70px", marginLeft: "15px" }} /></h2>
+                <img src='https://main--stellar-bublanina-20e9ef.netlify.app//img/user.jpg' alt="project-image" class="img-detalle-vista-equipo"></img>
+                <img src='https://main--stellar-bublanina-20e9ef.netlify.app//img/user.jpg' alt="project-image" class="img-detalle-vista-equipo"></img>
 
                 <h2 class="titulovideos" style={{ paddingBottom: "10px", paddingTop: "10px" }}><b>Nuestra visión</b></h2>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/rFkleIaPZQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
