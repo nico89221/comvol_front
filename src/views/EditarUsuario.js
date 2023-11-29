@@ -34,7 +34,7 @@ const validate = event => {
 
 function EditarUsuario() {
 
-    let url = 'http://localhost:8080/persona/detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'https://api-production-db96.up.railway.app/persona/detalle?id_persona=' + localStorage.getItem('id');
     const [perfil, setPerfil] = useState("");
     const [perfilFinal, setPerfilFinal] = useState();
     const [localidad, setLocalidad] = useState([]);
@@ -178,7 +178,7 @@ function EditarUsuario() {
             console.log(config.body)
             console.log(localStorage.getItem('id'))
 
-            let res = await fetch('http://localhost:8080/persona/editar?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/editar?id_persona=' + localStorage.getItem('id'), config)
             let json = await res.json()
 
             window.location = '/perfil'
@@ -225,7 +225,7 @@ function EditarUsuario() {
                     </div>
                     <div class="form-row">
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>Pais</label>
+                            <label for="inputState" className='label_proyecto'>País</label>
                             <select id='idPais' value={perfil.idPais} onChange={handleChange} name='idPais' class="form-control"  >
                                 <option value={1}>Argentina</option>
                             </select>
@@ -246,7 +246,7 @@ function EditarUsuario() {
                         </div>
                         <span className='error'>{errors && errors.provincia}</span>
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>localidad</label>
+                            <label for="inputState" className='label_proyecto'>Localidad</label>
                             <select id='localidad' value={perfil.localidad} onChange={handleChange} name='localidad' class="form-control"  >
                                 {
                                     localidad.map(loc => {
@@ -283,7 +283,7 @@ function EditarUsuario() {
                         </div>
                         <div class="form-row">
                             <div class='label_proyecto'>
-                                <label for="inputState" className='label_proyecto'>Elegir nuevo Categoria de interes</label>
+                                <label for="inputState" className='label_proyecto'>Elegir nuevo Categoría de interes</label>
                                 <select id='idCategoria' onChange={handleChange} name='idCategoria' class="form-control"  >
                                     <option selected>Sin definir</option>
                                     <option value={1}>VIDEOJUEGOS</option>
@@ -306,7 +306,7 @@ function EditarUsuario() {
                             </div>
                         </div>
                         <div class="form-group" >
-                            <label for="inputEmail4" className='label_proyecto'>Numero de celular</label>
+                            <label for="inputEmail4" className='label_proyecto'>Número de celular</label>
                             <input name='numeroCelular' type="number" class="form-control" id="numeroCelular"
                                 value={perfil.numeroCelular} onChange={handleChange}></input>
                         </div>

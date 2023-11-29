@@ -19,19 +19,19 @@ function EnviarForm() {
             <form >
                 <div class="form-group">
                     <label for="from_name">Nombre y Apellido</label>
-                    <input type="text" class="form-control" name="to_name" id="to_name" aria-describedby="emailHelp" placeholder="nombre y apellido" />
+                    <input type="text" class="form-control" id="from_name" aria-describedby="emailHelp" placeholder="nombre y apellido" />
                 </div>
                 <div class="form-group">
-                    <label for="email_id">E-Mail Contacto</label>
-                    <input type="email" class="form-control" name="from_name" id="from_name" placeholder="email" />
+                    <label for="email_id">E-mail Contacto</label>
+                    <input type="email" class="form-control" id="email_id" placeholder="email" />
                 </div>
                 <div class="form-group">
-                    <label class="form-check-label" for="message" >Hola</label>
-                    <textarea id="message"
-                        name="message" class="form-control" rows="3"
+                    <label class="form-check-label" for="message" >Mensaje</label>
+                    <textarea id='acercaDe'
+                        name='acercaDe' class="form-control" rows="3"
                     ></textarea>
                 </div>
-                <input type="submit" id="button" value="Send Email" />
+                <input type="submit" id="button" value="Enviar Formulario" />
             </form>
             <body>
                 <script src="./js/app.js"></script>

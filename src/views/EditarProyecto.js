@@ -28,7 +28,7 @@ const validate = event => {
 function EditarProyecto() {
 
     let { id } = useParams();
-    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
+    let url = 'https://api-production-db96.up.railway.app/proyecto/detalle?id_proyecto=' + id;
     const [detalle, setDetalle] = useState("");
     const [detalleFinal, setDetalleFinal] = useState("");
     const [errors, setErrors] = useState();
@@ -157,7 +157,7 @@ function EditarProyecto() {
 
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/proyecto/editar?id_proyecto=' + id, config)
+            let res = await fetch('https://api-production-db96.up.railway.app/proyecto/editar?id_proyecto=' + id, config)
             let json = await res.json()
 
             window.location = '/mis_proyectos';
@@ -183,14 +183,14 @@ function EditarProyecto() {
                     <h2 className='titulo-proyecto'>Editar proyecto</h2>
                     <div class="form-row">
                         <div class="form-group" >
-                            <label for="inputEmail4" className='label_proyecto'>Titulo del proyecto</label>
+                            <label for="inputEmail4" className='label_proyecto'>Título del proyecto</label>
                             <input name='tituloProyecto' type="text" class="form-control" id="tituloProyecto"
                                 value={detalle.tituloProyecto} onChange={handleChange} placeholder="Titulo del proyecto..."
                             ></input>
                         </div>
                         <span className='error'>{errors && errors.tituloProyecto}</span>
                         <div class='label_proyecto' >
-                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Descripcion</label>
+                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Descripción</label>
                             <textarea id='descripcionProyecto' value={detalle.descripcionProyecto} onChange={handleChange}
                                 name='descripcionProyecto' class="form-control" rows="3" placeholder='Descripcion breve del proyecto'
                             ></textarea>
@@ -215,14 +215,14 @@ function EditarProyecto() {
                         <span className='error'>{errors && errors.descripcionProyecto}</span>
                     </div>
                     <div class='label_proyecto'>
-                        <label for="inputAddress" className='label_proyecto'>Cantidad de Integrantes necesarios</label>
+                        <label for="inputAddress" className='label_proyecto'>Cantidad de integrantes necesarios</label>
                         <input id="limitePersonasProyecto" value={detalle.limitePersonasProyecto} onChange={handleChange}
                             name='limitePersonasProyecto' type="number" class="form-control" placeholder="1,2,3..."></input>
                     </div>
                     <span className='error'>{errors && errors.limitePersonasProyecto}</span>
                     <div class="form-row">
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>Categoria</label>
+                            <label for="inputState" className='label_proyecto'>Categoría</label>
                             <select id='idCategoria' value={detalle.idCategoria} onChange={handleChange} name='idCategoria' class="form-control"  >
                                 <option value={1}>VIDEOJUEGOS</option>
                                 <option value={2}>APLICACIONES MOVILES</option>
@@ -235,7 +235,7 @@ function EditarProyecto() {
                         <div class='label_proyecto'>
                             <label for="inputState" className='label_proyecto'>Estado</label>
                             <select id='idEstado' value={detalle.idEstado} onChange={handleChange} name='idEstado' class="form-control"  >
-                                <option value={1}>Abierto a postulacion</option>
+                                <option value={1}>Abierto a postulación</option>
                                 <option value={2}>En desarollo</option>
                                 <option value={3}>Cancelado</option>
                                 <option value={4}>Finalizado</option>
@@ -245,7 +245,7 @@ function EditarProyecto() {
                             <label for="inputState" className='label_proyecto'>Forma de Pago</label>
                             <select id='idFormaDePago' name='idFormaDePago' value={detalle.idFormaDePago} onChange={handleChange} class="form-control"  >
                                 <option selected value={0} >Ingresa una forma de pago</option>
-                                <option type="number" value={1}>CONTRATACION</option>
+                                <option type="number" value={1}>CONTRATACIÓN</option>
                                 <option type="number" value={2}>SIN DEFINIR</option>
                             </select>
                         </div>

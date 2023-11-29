@@ -18,7 +18,7 @@ function BuscadorProyecto() {
     </span>
 
     useEffect(() => {
-        fetch("http://localhost:8080/proyecto/filtrar?id_categoria=&id_estado=&id_rol")
+        fetch("https://api-production-db96.up.railway.app/proyecto/filtrar?id_categoria=&id_estado=&id_rol")
             .then(response => response.json())
             .then((data) => {
 
@@ -49,7 +49,7 @@ function BuscadorProyecto() {
         event.preventDefault()
       
         console.log(buscar)
-        let url = "http://localhost:8080/proyecto/filtrar?id_categoria="+buscar.categoria+"&id_estado="+buscar.estado+"&id_rol="+buscar.rol;
+        let url = "https://api-production-db96.up.railway.app/proyecto/filtrar?id_categoria="+buscar.categoria+"&id_estado="+buscar.estado+"&id_rol="+buscar.rol;
         console.log(url)
         fetch(url)
             .then(response => response.json())
@@ -75,7 +75,7 @@ function BuscadorProyecto() {
                     </div>
                     <div class='selector-proyecto'>
                         <select class="form-control" aria-label="Default select example" id='categoria' name='categoria' onChange={handleChange}>
-                            <option selected value={0}>Categoria</option>
+                            <option selected value={0}>Categoría</option>
                             <option value={1}>VIDEOJUEGOS</option>
                             <option value={2}>APLICACIONES MOVILES</option>
                             <option value={3}>APLICACIONES WEB</option>
@@ -87,7 +87,7 @@ function BuscadorProyecto() {
                     <div class='selector-proyecto'>
                         <select class="form-control" aria-label="Default select example" id='estado' name='estado' onChange={handleChange}>
                             <option selected value={0}>Estado</option>
-                            <option value={1}>Abierto a postulacion</option>
+                            <option value={1}>Abierto a postulación</option>
                             <option value={2}>En desarollo</option>
                             <option value={3}>Cancelado</option>
                             <option value={4}>Finalizado</option>

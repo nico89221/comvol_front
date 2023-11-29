@@ -153,7 +153,7 @@ class RegistrarUsuario extends React.Component {
         const { errors, ...sinErros } = this.state
         const result = validate(sinErros)
         if (Object.keys(result).length) {
-            toast.warn('Campos invalidos o vacios', {
+            toast.warn('Campos inválidos o vacíos', {
                 position: "top-center",
                 autoClose: 10000,
                 hideProgressBar: false,
@@ -178,14 +178,14 @@ class RegistrarUsuario extends React.Component {
             }
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/persona/crear', config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/crear', config)
             let json = await res.json()
             console.log(json)
             this.setState({
                 loading: false
             })
             if (res.status == 200) {
-                toast.success('Te has registrado con exito', {
+                toast.success('Te has registrado con éxito', {
                     position: "top-center",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -265,7 +265,7 @@ class RegistrarUsuario extends React.Component {
                     </div>
                     <div class="form-row">
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>Pais</label>
+                            <label for="inputState" className='label_proyecto'>País</label>
                             <select id='pais' value={this.state.pais.value} onChange={this.handleChange} name='pais' class="form-control"  >
                                 <option selected>Sin definir</option>
                                 <option value={1}>Argentina</option>
@@ -322,7 +322,7 @@ class RegistrarUsuario extends React.Component {
                         {errors.perfilExterno && <span className='error'>{errors.perfilExterno}</span>}
                     </div>
                     <div class='label_proyecto'>
-                        <label for="inputAddress" className='label_proyecto'>Numero de celular</label>
+                        <label for="inputAddress" className='label_proyecto'>Número de celular</label>
                         <input id="numeroCelular" value={this.state.numeroCelular.value} onChange={this.handleChange} name='numeroCelular' type="number" class="form-control" placeholder="sin 54 ni 15"></input>
                         {errors.numeroCelular && <span className='error'>{errors.numeroCelular}</span>}
                     </div>
@@ -344,9 +344,9 @@ class RegistrarUsuario extends React.Component {
                     </div>
                     <div class="form-row">
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>Categoria interesada</label>
+                            <label for="inputState" className='label_proyecto'>Categoría interesada</label>
                             <select id='categoria' value={this.state.categoria.value} onChange={this.handleChange} name='categoria' class="form-control"  >
-                                <option selected value={0}>Categoria</option>
+                                <option selected value={0}>Categoría</option>
                                 <option value={1}>VIDEOJUEGOS</option>
                                 <option value={2}>APLICACIONES MOVILES</option>
                                 <option value={3}>APLICACIONES WEB</option>

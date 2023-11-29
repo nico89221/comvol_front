@@ -45,7 +45,7 @@ function FilaPostulacion(props) {
             }
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/persona_proyecto/crear_persona_proyecto', config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona_proyecto/crear_persona_proyecto', config)
             let json = await res.json()
             console.log(res)
             console.log(json)
@@ -86,7 +86,7 @@ function FilaPostulacion(props) {
             }
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/persona_proyecto/rechazar_persona_proyecto?id_persona_postulacion='+props.idPostulacionPersona, config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona_proyecto/rechazar_persona_proyecto?id_persona_postulacion='+props.idPostulacionPersona, config)
             let json = await res.json()
             console.log(res)
             console.log(json)

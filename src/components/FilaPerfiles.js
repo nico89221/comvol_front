@@ -11,7 +11,7 @@ function FilaPerfiles(props) {
     const [detalle, setDetalle] = useState("");
     const [errors, setErrors] = useState();
 
-    let url = 'http://localhost:8080/proyecto/lista_detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'https://api-production-db96.up.railway.app/proyecto/lista_detalle?id_persona=' + localStorage.getItem('id');
     let urlCrearProyecto = '../crear_proyecto'
     let valor = 0
 
@@ -100,7 +100,7 @@ function FilaPerfiles(props) {
             }
 
 
-            let res = await fetch('http://localhost:8080/persona/compartir_proyecto?id_persona='+props.idPersona+'&url_proyecto=http://localhost:3000/detalle_proyecto/'+2+'&id_referente=' + localStorage.getItem('id'), config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/compartir_proyecto?id_persona='+props.idPersona+'&url_proyecto=https://main--stellar-bublanina-20e9ef.netlify.app/detalle_proyecto/'+2+'&id_referente=' + localStorage.getItem('id'), config)
 
             if (res.status == 200) {
                 toast.success('Se ha compartido el proyecto con exito al postulante', {

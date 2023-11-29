@@ -9,7 +9,7 @@ function Postularse() {
 
     let { id } = useParams();
     console.log(id);
-    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
+    let url = 'https://api-production-db96.up.railway.app/proyecto/detalle?id_proyecto=' + id;
 
     const [detalle, setDetalle] = useState(null);
     const [rol, setRol] = useState(null);
@@ -92,10 +92,10 @@ function Postularse() {
             }
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/persona_proyecto/postulacion?id_persona=' + localStorage.getItem('id') + '&id_proyecto=' + detalle.idProyecto, config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona_proyecto/postulacion?id_persona=' + localStorage.getItem('id') + '&id_proyecto=' + detalle.idProyecto, config)
             let json = await res.json()
             console.log(json.descripcion)
-            if (json.descripcion == "El usuario ya se encuentra postulado a ese proyecto") {
+            if (json.descripcion == "El usuario ya se encuentra postulado a este proyecto") {
                 toast.error('Ya estas postulado', {
                     position: "top-center",
                     autoClose: 5000,
@@ -108,7 +108,7 @@ function Postularse() {
                 });
             } else {
 
-                toast.success('la postulacion ha sido exitosamente', {
+                toast.success('La postulación ha sido exitosamente', {
                     position: "top-center",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -140,7 +140,7 @@ function Postularse() {
 
         return (
             <div>
-                <h3 class='titulo-postularse'>Finaliza tu postulacion</h3>
+                <h3 class='titulo-postularse'>Finaliza tu postulación</h3>
                 <section class='section-suscripcion'>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                     <div class="card" style={{ width: "18rem" }}>

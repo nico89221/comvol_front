@@ -6,7 +6,7 @@ import Fila from '../components/Fila';
 let count = 0;
 function DetalleProyectoCreado(props) {
 
-    let url = 'http://localhost:8080/proyecto/lista_detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'https://api-production-db96.up.railway.app/proyecto/lista_detalle?id_persona=' + localStorage.getItem('id');
     let urlCrearProyecto = '../crear_proyecto'
 
     const [listDetalle, setListDetalle] = useState([]);
@@ -51,7 +51,7 @@ function DetalleProyectoCreado(props) {
                             <thead class="table-dark">
                                 <tr>
                                     <td>Titulo</td>
-                                    <td>Categoria</td>
+                                    <td>Categoría</td>
                                     <td>Estado</td>
                                     <td>Cantidad Integrantes</td>
                                     <td>Imagen</td>

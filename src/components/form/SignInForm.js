@@ -20,7 +20,7 @@ export default function SignInForm({ errors, onSubmitCallback }) {
                     type='email'
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    placeholder="Correo Electronico"
+                    placeholder="Correo electrónico"
                     isInvalid={errors.email}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -43,7 +43,7 @@ export default function SignInForm({ errors, onSubmitCallback }) {
             </Form.Group>
 
             <div>
-                <Button variant='primary' type='submit' className='btn-inicio'>Iniciar sesion</Button>
+                <Button variant='primary' type='submit' className='btn-inicio'>Iniciar sesión</Button>
             </div>
         </Form>
     )

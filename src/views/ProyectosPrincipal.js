@@ -12,7 +12,7 @@ function ProyectosPrincipal() {
 
     if (listProyectos.length == 0) {
 
-        fetch("http://localhost:8080/proyecto/filtrar?id_categoria&id_estado=1&id_estado=2&id_rol&pagina=0&cantidad=3")
+        fetch("https://api-production-db96.up.railway.app/proyecto/filtrar?id_categoria&id_estado=1&id_estado=2&id_rol&pagina=0&cantidad=3")
             .then(response => response.json())
             .then(function (data) {
 

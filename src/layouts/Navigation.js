@@ -55,12 +55,12 @@ export default function Navigation() {
       <NavDropdown.Item as={NavLink} to="/cerrar_sesion" style={{ fontSize: 14 }}>Cerrar sesión</NavDropdown.Item>
     </NavDropdown>
     suscribirse = <Nav.Link as={NavLink} to="/suscribirse" style={{ fontSize: 14 }}>Suscribite</Nav.Link>
-    proyectosInteres = <Nav.Link as={NavLink} to="/proyectos_interes" style={{ fontSize: 14 }}>Proyectos de Interes</Nav.Link>
+    proyectosInteres = <Nav.Link as={NavLink} to="/proyectos_interes" style={{ fontSize: 14 }}>Proyectos de Interés</Nav.Link>
     registrarse = <p></p>
     buscarProyecto = <Nav.Link as={NavLink} to="/buscar_proyectos" style={{ fontSize: 14 }}>Buscar Proyectos</Nav.Link>
     recruiting = <Nav.Link as={NavLink} to="/recruiting" style={{ fontSize: 14 }}>Búsqueda y Selección</Nav.Link>
   } else {
-    inicio = <Nav.Link as={NavLink} to="/sigin" style={{ fontSize: 14 }}>Iniciar Sesión</Nav.Link>;
+    inicio = <Nav.Link as={NavLink} to="/sigin" style={{ fontSize: 14 }}>Iniciar sesión</Nav.Link>;
     usuario = <p></p>
     suscribirse = <p></p>
     registrarse = <Nav.Link as={NavLink} to='/registrarse' style={{ fontSize: 14 }}>Registrarse</Nav.Link>
@@ -71,7 +71,7 @@ export default function Navigation() {
 
   return (
     <Navbar bg='dark' variant='dark' expand="lg">
-      <Navbar.Brand as={NavLink} to='/'><img src="http://localhost:3000/img/logo2.png" class="logo" alt="..." /></Navbar.Brand>
+      <Navbar.Brand as={NavLink} to='/'><img src="https://main--stellar-bublanina-20e9ef.netlify.app/img/logo2.png" class="logo" alt="..." /></Navbar.Brand>
       <NavbarToggle aria-controls='main-menu'></NavbarToggle>
       <Navbar.Collapse id='main-menu' className='main-menu'>
         <Nav >

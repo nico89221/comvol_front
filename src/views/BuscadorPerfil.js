@@ -18,7 +18,7 @@ function BuscadorPerfil() {
         </span>
 
     useEffect(() => {
-        fetch("http://localhost:8080/persona/filtrar?id_rol=&pagina=0&cantidad=20&id_pais=")
+        fetch("https://api-production-db96.up.railway.app/persona/filtrar?id_rol=&pagina=0&cantidad=20&id_pais=")
             .then(response => response.json())
             .then((data) => {
 
@@ -53,7 +53,7 @@ function BuscadorPerfil() {
         event.preventDefault()
 
         console.log(buscar)
-        let url = "http://localhost:8080/persona/filtrar?id_rol="+buscar.rol+"&pagina=0&cantidad=20&id_pais=" + buscar.pais;
+        let url = "https://api-production-db96.up.railway.app/persona/filtrar?id_rol="+buscar.rol+"&pagina=0&cantidad=20&id_pais=" + buscar.pais;
         console.log(url)
         fetch(url)
             .then(response => response.json())

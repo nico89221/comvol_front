@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import validator from 'validator'
 import emailjs from '@emailjs/browser';
 
 
@@ -13,15 +12,29 @@ export const Reclutar = () => {
 
     const form = useRef();
 
-    const sendEmail = (e) => {
+    const sendEmail = async(e) => {
       e.preventDefault();
   
-      emailjs.sendForm('service_foo5cmq', 'template_vxli6kp', form.current, 'UubOdUhuE_6wNw6eM')
+      emailjs.sendForm('service_mhxfcbr', 'template_vxli6kp', form.current, 'UubOdUhuE_6wNw6eM')
         .then((result) => {
             console.log(result.text);
+            toast.success('Se ha enviado con éxito', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+
+            
         }, (error) => {
             console.log(error.text);
         });
+        await delay(3000);
+        window.location = '/'
     };
 
 
@@ -35,7 +48,7 @@ export const Reclutar = () => {
                     <p class="about__paragraph"> Contamos con un equipo de trabajo especializado en el reclutamiento y la selección de perfiles idóneos para su negocio. Con el objetivo de satisfacer las necesidades
                         de nuestros clientes de la manera más eficiente, ofrecemos servicios de:
                     </p>
-                    <p class="about__paragraph"> Selección tradicional Jóvenes profesionales Head Hunting RPO y Reclutamiento.
+                    <p class="about__paragraph"> Selección tradicional, Jóvenes profesionales, Head Hunting RPO y Reclutamiento.
                         Brindamos servicios a medida, con la más alta calidad de prestación y efectividad, para favorecer la optimización de costos.
                     </p>
                     <h3 className='titulo-proyecto' style={{paddingTop:"25px"}}><b>Contáctenos</b></h3>
@@ -51,7 +64,7 @@ export const Reclutar = () => {
                     </div>
 
                     <div class="form-group" >
-                        <label for="inputEmail4" className='label_proyecto'>Descripcion</label>
+                        <label for="inputEmail4" className='label_proyecto'>Descripción</label>
                         <textarea id='descripcionProyecto'
                             name='message' class="form-control" rows="3" 
                             maxLength={200}></textarea>

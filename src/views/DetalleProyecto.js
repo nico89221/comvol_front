@@ -6,7 +6,7 @@ function DetalleProyecto(props) {
 
     let { id } = useParams();
     console.log(id);
-    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
+    let url = 'https://api-production-db96.up.railway.app/proyecto/detalle?id_proyecto=' + id;
 
     const [detalle, setDetalle] = useState(null);
 
@@ -48,7 +48,7 @@ function DetalleProyecto(props) {
 
     let contenido;
     if (detalle == null) {
-        return contenido = <p>cargando</p>;
+        return contenido = <p>Cargando</p>;
     }
     else {
 
@@ -74,7 +74,7 @@ function DetalleProyecto(props) {
                                 }
                             </p>
                             <p style={{ fontSize: "16px" }}><b>Estado: </b>{detalle.descripcionEstado}</p>
-                            <p style={{ fontSize: "16px" }}><b>Categoria: </b>{detalle.descripcionCategoria}</p>
+                            <p style={{ fontSize: "16px" }}><b>Categoría: </b>{detalle.descripcionCategoria}</p>
                             <p style={{ fontSize: "16px" }}><b>Cantidad de integrantes: </b>{detalle.limitePersonasProyecto}</p>
                             <p style={{ fontSize: "16px" }}><b>Product Owner: </b>{detalle.nombreReferente}</p>
                             <p style={{ fontSize: "16px" }}><b>Forma de Pago: </b>{detalle.formaDePago}</p>

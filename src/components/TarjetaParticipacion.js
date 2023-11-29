@@ -18,14 +18,14 @@ function TarjetaParticipacion(props) {
     let urlImg = props.urlImagenProyecto;
     let urlDetalle = "detalle_proyecto/" + props.idProyecto;
     const [rechazar, setRechazar] = useState({ idEstadoPersona: 3 });
-    let url = "http://localhost:8080/detalle_proyecto/" + props.idProyecto
+    let url = "https://main--stellar-bublanina-20e9ef.netlify.app/detalle_proyecto/" + props.idProyecto;
     let title = "Proyecto en el que participo"
     let summary = "Proyecto en el que participo"
     const [listIntegrantes, setlistIntegrantes] = useState([]);
     const [modalShow, setModalShow] = React.useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8080/persona_proyecto/detalle_proyecto_persona?id_proyecto=" + props.idProyecto + "&pagina=0&cantidad=20")
+        fetch("https://api-production-db96.up.railway.app/persona_proyecto/detalle_proyecto_persona?id_proyecto=" + props.idProyecto + "&pagina=0&cantidad=20")
             .then(response => response.json())
             .then(function (data) {
 
@@ -57,7 +57,7 @@ function TarjetaParticipacion(props) {
             }
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/persona_proyecto/finalizar_persona_proyecto?id_persona_proyecto=' + props.idPersonaProyecto, config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona_proyecto/finalizar_persona_proyecto?id_persona_proyecto=' + props.idPersonaProyecto, config)
             let json = await res.json()
             console.log(res)
             console.log(json)

@@ -50,11 +50,11 @@ function Suscripcion() {
                 }
             }
 
-            let res = await fetch('http://localhost:8080/persona/alta_suscripcion?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/alta_suscripcion?id_persona=' + localStorage.getItem('id'), config)
             let json = await res.json()
             console.log(json.descripcion)
-            if (json.descripcion == "El usuario ya se encuentraba suscripto") {
-                toast.error('Ya tienes suscripcion', {
+            if (json.descripcion == "El usuario ya se encuentra suscripto") {
+                toast.error('Ya tienes suscripción', {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -123,11 +123,11 @@ function Suscripcion() {
                 }
             }
 
-            let res = await fetch('http://localhost:8080/persona/alta_suscripcion?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/alta_suscripcion?id_persona=' + localStorage.getItem('id'), config)
             let json = await res.json()
             console.log(json.descripcion)
-            if (json.descripcion == "El usuario ya se encuentraba suscripto") {
-                toast.error('Ya tienes suscripcion', {
+            if (json.descripcion == "El usuario ya se encuentra suscripto") {
+                toast.error('Ya tienes suscripción', {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -166,7 +166,7 @@ function Suscripcion() {
 
     return (
         <section class='section-suscripcion'>
-            <h2 class="subtitle">Suscribite y súmate a la comunidad COMVOL </h2>
+            <h2 class="subtitle">Suscribite y sumate a la comunidad COMVOL </h2>
             <section style={{ marginBottom: "25px" }}>
 
                 <div class="card" style={{ width: "18rem" }}>

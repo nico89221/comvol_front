@@ -10,7 +10,7 @@ function MisPostulaciones() {
 
     useEffect(()=>{
 
-        fetch("http://localhost:8080/persona_proyecto/detalle_postulacion_persona?id_persona="+localStorage.getItem("id")+"&pagina=0&cantidad=20")
+        fetch("https://api-production-db96.up.railway.app/persona_proyecto/detalle_postulacion_persona?id_persona="+localStorage.getItem("id")+"&pagina=0&cantidad=20")
             .then(response => response.json())
             .then(function (data) {
 
@@ -46,7 +46,7 @@ function MisPostulaciones() {
 
             <section className="principal">
 
-                <h2 className='titulo'><b>Aun no tienes postulaciones que estas esperando a buscar proyectos y postularte</b></h2>
+                <h2 className='titulo'><b>¿ Aún no tienes postulaciones ?, que estas esperando a buscar proyectos y postularte</b></h2>
                 <a class="btn btn-success" style={{fontSize:24,margin:24}} href={urlBuscarProyecto}>Buscar proyecto y postularse</a>
 
             </section>

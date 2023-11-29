@@ -14,9 +14,9 @@ function QuienesSomos() {
 
                     <p style={{ fontSize: "16px" }}>Somos una red de búsqueda con un objetivo principal basado en ayudar a las personas a concretar ideas difíciles de desarrollar y a adquirir una primera experiencia laboral.</p>
 
-                    <p style={{ fontSize: "16px" }} > La herramienta surge a mediados del segundo semestre del 2021,  periodo en el cual Nicolas Miño y Pablo Futterer, ambos estudiantes de la carrera de Analista de Sistemas, escuchaban y entendían la problemática que se presentaba no solo en sus compañeros de cursadas sino que  era una situación que ellos también transitaban, ya que al no tener una experiencia laboral eran excluidos de postulaciones de trabajo.</p>
+                    <p style={{ fontSize: "16px" }} > La herramienta surge a mediados del segundo semestre del 2021,  período en el cual Nicolás Miño y Pablo Futterer, ambos estudiantes de la carrera de Analista de Sistemas, escuchaban y entendían la problemática que se presentaba no solo en sus compañeros de cursadas sino que  era una situación que ellos también transitaban, ya que al no tener una experiencia laboral eran excluídos de postulaciones de trabajo.</p>
 
-                    <p style={{ fontSize: "16px" }}>Esta aplicación permite de manera gratuita generar ideas/proyectos de personas que solicitaran el recurso requerido, abarcando desde un personal a un socio inversor, esto dará origen a postulaciones abiertas donde cualquier interesado podrá formar parte del negocio y su participación iniciara el camino hacia una primer experiencia laboral.
+                    <p style={{ fontSize: "16px" }}>Esta aplicación permite de manera gratuita generar ideas/proyectos de personas que solicitarán el recurso requerido, abarcando desde un personal a un socio inversor, esto dará origen a postulaciones abiertas donde cualquier interesado podrá formar parte del negocio y su participación iniciará el camino hacia una primer experiencia laboral.
 
                         Nuestra innovación permitirá que el usuario creador de la propuesta pueda aceptar a los participantes postulados pudiéndose contactar con ellos mediante correo electrónico o el uso de la mensajería más utilizada en la actualidad.
 
@@ -28,7 +28,7 @@ function QuienesSomos() {
                 <img src='http://localhost:3000/img/user.jpg' alt="project-image" class="img-detalle-vista-equipo"></img>
                 <img src='http://localhost:3000/img/user.jpg' alt="project-image" class="img-detalle-vista-equipo"></img>
 
-                <h2 class="titulovideos" style={{ paddingBottom: "10px", paddingTop: "10px" }}><b>Nuestra vision</b></h2>
+                <h2 class="titulovideos" style={{ paddingBottom: "10px", paddingTop: "10px" }}><b>Nuestra visión</b></h2>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/rFkleIaPZQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
             </section>
@@ -52,7 +52,7 @@ function QuienesSomos() {
                             </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Hoy Comvol posee dos tipos de suscripción una paga donde el usuario tendrá que abonar todos los meses la cuota mediante mercado pago y una suscripción gratuita que no posee actualización mensual.</div>
+                            <div class="accordion-body">Hoy Comvol posee dos tipos de suscripción: una paga donde el usuario tendrá que abonar todos los meses la cuota mediante mercado pago y una suscripción gratuita que no posee actualización mensual.</div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -62,7 +62,7 @@ function QuienesSomos() {
                             </button>
                         </h2>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Si, el reclutamiento posee un costo mínimo a diferencia de otras empresas reclutadoras</div>
+                            <div class="accordion-body">Si, el reclutamiento posee un costo mínimo a diferencia de otras empresas reclutadoras.</div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -72,7 +72,7 @@ function QuienesSomos() {
                             </button>
                         </h2>
                         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Podes tener el proyecto el tiempo que sea necesario, sin costo alguno.</div>
+                            <div class="accordion-body">Podés tener el proyecto el tiempo que sea necesario, sin costo alguno.</div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -92,7 +92,7 @@ function QuienesSomos() {
                             </button>
                         </h2>
                         <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Ninguno, solamente tenes que registrarte como empresa o usuario y crear el proyecto de tu incumbencia.</div>
+                            <div class="accordion-body">Ninguno, solamente tenés que registrarte como empresa o usuario y crear el proyecto de tu incumbencia.</div>
                         </div>
                     </div>
                     <div class="accordion-item">

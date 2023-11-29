@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function VerPostulaciones(props) {
 
     let{id}= useParams();
-    let url = 'http://localhost:8080/persona_proyecto/detalle_postulacion?id_proyecto='+id+'&pagina=0&cantidad=20' ;
+    let url = 'https://api-production-db96.up.railway.app/persona_proyecto/detalle_postulacion?id_proyecto='+id+'&pagina=0&cantidad=20' ;
 
     const [listPostulacion, setlistPostulacion] = useState([]);
 
@@ -46,7 +46,7 @@ function VerPostulaciones(props) {
                             <td>Nombre</td>
                             <td>Apellido</td>
                             <td>Email</td>
-                            <td>Pais</td>
+                            <td>País</td>
                             <td>Perfil Externo</td>
                             <td>Rol postulado</td>
                             <td>Estado</td>

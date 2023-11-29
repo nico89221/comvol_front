@@ -13,7 +13,7 @@ function ProyectosInteres() {
     const [perfil, setPerfil] = useState(null);
     const [listProyectos, setListProyecto] = useState([]);
 
-    let url = 'http://localhost:8080/persona/detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'https://api-production-db96.up.railway.app/persona/detalle?id_persona=' + localStorage.getItem('id');
     
     if(perfil == null){
             fetch(url)
@@ -41,7 +41,7 @@ function ProyectosInteres() {
         console.log("los roles son:")
         console.log(roles)
 
-        fetch("http://localhost:8080/proyecto/filtrar?id_categoria="+perfil.idCategoria+"&id_estado=1&id_rol="+roles)
+        fetch("https://api-production-db96.up.railway.app/proyecto/filtrar?id_categoria="+perfil.idCategoria+"&id_estado=1&id_rol="+roles)
         .then(response => response.json())
         .then(function (data) {
 

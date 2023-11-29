@@ -7,7 +7,7 @@ export const loginUser = (userData) => dispatch => {
     console.log(userData)
 
     return new Promise((resolve, reject) => {
-        axios.post('http://localhost:8080/persona/inicio_sesion', userData, {
+        axios.post('https://api-production-db96.up.railway.app/persona/inicio_sesion', userData, {
             headers: { 'Accept': 'application/json', 'Content-type': 'application/json' }
         }).then(response => {
             console.log("por el response")

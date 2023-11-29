@@ -36,11 +36,11 @@ export default function IniciarSesion() {
     setErrors(errors);
 
     if (!validator.isEmail(email)) {
-      errors.email = "El correo electronico no es valido"
+      errors.email = "El correo electrónico no es válido"
     }
 
     if (validator.isEmpty(contrasena)) {
-      errors.contrasena = "La contraseña no puede estar vacia"
+      errors.contrasena = "La contraseña no puede estar vacía"
     }
 
     if (!isObjectEmpty(errors)) {
@@ -72,11 +72,11 @@ export default function IniciarSesion() {
       <Row>
         <Col sm="12" md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <Card body>
-            <h3>Iniciar Sesion</h3>
+            <h3>Iniciar sesión</h3>
             <SignInForm errors={errors} onSubmitCallback={login}></SignInForm>
             <span className='error'>{errorSesion && errorSesion.error}</span>
             <div className='mt-4'>
-              <Link to={"/registrarse"}>Registrate Aqui</Link>
+              <Link to={"/registrarse"}>Registrate Aquí</Link>
               <ToastContainer />
             </div>
           </Card>

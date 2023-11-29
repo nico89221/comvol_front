@@ -56,7 +56,7 @@ class CrearProyecto extends React.Component {
             idFormaDePago: 0,
             esEmpresa: false,
             idResponsable: localStorage.getItem('id'),
-            urlImagenProyecto: "http://localhost:3000/img/comvol.jpg",
+            urlImagenProyecto: "https://main--stellar-bublanina-20e9ef.netlify.app/img/comvol.jpg",
             loading: false,
             selectedOption: null,
             proyectoRoles: [],
@@ -140,7 +140,7 @@ class CrearProyecto extends React.Component {
             }
             console.log(config.body)
 
-            let res = await fetch('http://localhost:8080/proyecto/crear', config)
+            let res = await fetch('https://api-production-db96.up.railway.app/proyecto/crear', config)
             let json = await res.json()
             this.setState({
                 loading: false

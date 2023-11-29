@@ -41,7 +41,7 @@ const validate = values => {
     return errors
 }
 
-let url = 'http://localhost:8080/persona/modificar_contrasena?id_persona=' + localStorage.getItem('id');
+let url = 'https://api-production-db96.up.railway.app/persona/modificar_contrasena?id_persona=' + localStorage.getItem('id');
 
 class CambioContrasena extends React.Component {
     

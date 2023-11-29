@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 function VistaProyectoCreado() {
 
     let { id } = useParams();
-    let url = 'http://localhost:8080/proyecto/detalle?id_proyecto=' + id;
+    let url = 'https://api-production-db96.up.railway.app/proyecto/detalle?id_proyecto=' + id;
 
     const [detalle, setDetalle] = useState(null);
 
@@ -37,12 +37,12 @@ function VistaProyectoCreado() {
                             <div class='img-div'>
                                 <img src={detalle.urlImagenProyecto} alt="project-image" class="img-detalle-vista"></img>
                             </div>
-                            <label for="inputEmail4" className='label_proyecto'>Titulo del proyecto</label>
+                            <label for="inputEmail4" className='label_proyecto'>Título del proyecto</label>
                             <input name='tituloProyecto' type="text" class="form-control" id="tituloProyecto"
                             value={detalle.tituloProyecto} placeholder="Titulo del proyecto..."></input>
                         </div>
                         <div class='label_proyecto' >
-                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Descripcion</label>
+                            <label for="exampleFormControlTextarea1" className='label_proyecto'>Descripción</label>
                             <textarea id='descripcionProyecto' value={detalle.descripcionProyecto}
                                 name='descripcionProyecto' class="form-control" rows="3" placeholder='Descripcion breve del proyecto'
                             ></textarea>
@@ -55,12 +55,12 @@ function VistaProyectoCreado() {
                         </div>
                     </div>
                     <div class='label_proyecto'>
-                        <label for="inputAddress" className='label_proyecto'>Cantidad de Integrantes necesarios</label>
+                        <label for="inputAddress" className='label_proyecto'>Cantidad de integrantes necesarios</label>
                         <input id="limitePersonasProyecto" value={detalle.limitePersonasProyecto} name='limitePersonasProyecto' type="number" class="form-control" placeholder="1,2,3..."></input>
                     </div>
                     <div class="form-row">
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>Categoria</label>
+                            <label for="inputState" className='label_proyecto'>Categoría</label>
                             <select id='idCategoriaProyecto' value={detalle.descripcionCategoria} name='idCategoriaProyecto' class="form-control">
                                 <option selected>{detalle.descripcionCategoria}</option>
                             </select>

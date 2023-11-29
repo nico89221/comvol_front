@@ -12,7 +12,7 @@ export default function FormaDePago() {
         <Col sm="12" md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <Card body>
 
-            <img src='http://localhost:3000/img/tarjeta.png' alt="project-image" class="img-tarjeta"></img>
+            <img src='https://main--stellar-bublanina-20e9ef.netlify.app//img/tarjeta.png' alt="project-image" class="img-tarjeta"></img>
             <FormaDePagoCard></FormaDePagoCard>
             <div className='mt-4'>
               <ToastContainer />

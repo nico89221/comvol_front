@@ -16,7 +16,7 @@ function PerfilUsuario() {
         resolve => setTimeout(resolve, ms)
     );
 
-    let url = 'http://localhost:8080/persona/detalle?id_persona=' + localStorage.getItem('id');
+    let url = 'https://api-production-db96.up.railway.app/persona/detalle?id_persona=' + localStorage.getItem('id');
     let urlEditarUsuario = "./perfil/editar";
     let urlContrasena = './modificar_contrasena';
 
@@ -54,7 +54,7 @@ function PerfilUsuario() {
 
             }
 
-            let res = await fetch('http://localhost:8080/persona/baja?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/baja?id_persona=' + localStorage.getItem('id'), config)
             console.log(res)
             if (res.status == 200) {
                 localStorage.removeItem('id')
@@ -87,7 +87,7 @@ function PerfilUsuario() {
 
             }
 
-            let res = await fetch('http://localhost:8080/persona/baja_suscripcion?id_persona=' + localStorage.getItem('id'), config)
+            let res = await fetch('https://api-production-db96.up.railway.app/persona/baja_suscripcion?id_persona=' + localStorage.getItem('id'), config)
             console.log(res)
             if (res.status == 200) {
                 toast.success('Su suscripcion ha sido cancelada', {
@@ -116,7 +116,7 @@ function PerfilUsuario() {
 
     let contenido = perfil;
     if (contenido == null) {
-        return <p>cargando</p>
+        return <p>Cargando</p>
     }
     else {
         let btnSus;
@@ -125,7 +125,7 @@ function PerfilUsuario() {
             console.log("verdadero")
             btnSus =
                 <div class='contenedor-suscripcion'>
-                    <button type='button' class="btn btn-danger" onClick={bajaSuscripcion}>Cancelar suscripcion</button>
+                    <button type='button' class="btn btn-danger" onClick={bajaSuscripcion}>Cancelar suscripción</button>
                 </div>
         }
 
@@ -142,7 +142,7 @@ function PerfilUsuario() {
                     <div class="form-row">
                         <div class="form-group" >
                             <div class='img-div'>
-                                <img src='http://localhost:3000/img/user.jpg' alt="project-image" class="img-detalle-vista"></img>
+                                <img src='https://main--stellar-bublanina-20e9ef.netlify.app/img/user.jpg' alt="project-image" class="img-detalle-vista"></img>
                             </div>
                             <label for="inputEmail4" className='label_proyecto'>Nombre</label>
                             <input name='nombre' type="text" class="form-control" id="nombre"
@@ -167,7 +167,7 @@ function PerfilUsuario() {
                     </div>
                     <div class="form-row">
                         <div class='label_proyecto'>
-                            <label for="inputState" className='label_proyecto'>Pais</label>
+                            <label for="inputState" className='label_proyecto'>País</label>
                             <select id='pais' value={perfil.idPais} name='pais' class="form-control">
                                 <option selected>{perfil.pais}</option>
                             </select>
@@ -199,12 +199,12 @@ function PerfilUsuario() {
                             }
                         </div>
                         <div class="form-group" >
-                            <label for="inputEmail4" className='label_proyecto'>Categoria de interes</label>
+                            <label for="inputEmail4" className='label_proyecto'>Categoría de interes</label>
                             <input name='descripcionCategoria' type="text" class="form-control" id="descripcionCategoria"
                                 value={perfil.descripcionCategoria} ></input>
                         </div>
                         <div class="form-group" >
-                            <label for="inputEmail4" className='label_proyecto'>Numero de celular</label>
+                            <label for="inputEmail4" className='label_proyecto'>Número de celular</label>
                             <input name='numeroCelular' type="text" class="form-control" id="numeroCelular"
                                 value={perfil.numeroCelular} ></input>
                         </div>

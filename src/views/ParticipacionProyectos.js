@@ -10,7 +10,7 @@ function ParticipacionProyectos() {
 
     useEffect(()=>{
 
-        fetch("http://localhost:8080/persona_proyecto/detalle_proyecto_integrante?id_persona=   "+localStorage.getItem("id")+"&pagina=0&cantidad=20")
+        fetch("https://api-production-db96.up.railway.app/persona_proyecto/detalle_proyecto_integrante?id_persona=   "+localStorage.getItem("id")+"&pagina=0&cantidad=20")
             .then(response => response.json())
             .then(function (data) {
 
@@ -52,7 +52,7 @@ function ParticipacionProyectos() {
 
             <section className="principal">
 
-                <h2 className='titulo'><b>Aun no participas de ningun proyecto no te desanimes y segui buscando</b></h2>
+                <h2 className='titulo'><b>¿Aún no participas de ningun proyecto?. No te desanimes y segui buscando</b></h2>
                 <a class="btn btn-success" style={{fontSize:24,margin:24}} href={urlBuscarProyecto}>Buscar proyecto y postularse</a>
 
             </section>
