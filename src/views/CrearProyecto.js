@@ -234,11 +234,6 @@ class CrearProyecto extends React.Component {
                             <label class="form-check-label" for="defaultCheck1"> Es empresa</label>
                         </div>
                     </div>
-                    <label for="inputState" className='label_proyecto'>Imagen del proyecto</label>
-                    <div class="input-group mb-3 foto">
-                        <input type="file" class="form-control" id="imagen" name='imagen' accept='image/*' onChange={this.onFileChange}></input>
-                        <label class="input-group-text" for="inputGroupFile02" >jpg,png</label>
-                    </div>
                     <div class="form-group">
                     </div>
                     <div class='btn-proyecto'>

@@ -368,11 +368,6 @@ class RegistrarUsuario extends React.Component {
                             {errors.esEmpresa && <span className='error'>{errors.esEmpresa}</span>}
                         </div>
                     </div>
-                    <label for="inputState" className='label_proyecto'>Foto de perfil</label>
-                    <div class="input-group mb-3 foto">
-                        <input type="file" class="form-control" id="inputGroupFile02"></input>
-                        <label class="input-group-text" for="inputGroupFile02" >jpg,png</label>
-                    </div>
                     <div class="form-group" >
                         <label for="inputEmail4" className='label_proyecto'>Contraseña</label>
                         <input name='contrasena' type="password" class="form-control" id="contrasena"
