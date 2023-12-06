@@ -149,9 +149,7 @@ function Suscripcion() {
                     progress: undefined,
                     theme: "colored",
                 });
-
-
-                await delay(1500);
+                
                 window.open(
                     'https://mpago.la/2UPU44r',
                     '_blank' 
