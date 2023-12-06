@@ -111,7 +111,7 @@ function Suscripcion() {
 
                 await delay(2000);
                 window.location = '/registrarse';
-
+               
 
             }
 
@@ -152,8 +152,10 @@ function Suscripcion() {
 
 
                 await delay(1500);
-                
-
+                window.open(
+                    'https://mpago.la/2UPU44r',
+                    '_blank' 
+                  )
 
             }
 
@@ -196,7 +198,7 @@ function Suscripcion() {
                             <p class="price__features" style={{ fontSize: "1.2rem" }}>Promociones en cursos</p>
                         </div>
 
-                        <a onClick={suscribir} class="price__cta" target="_blank" href='https://mpago.la/2UPU44r'>Empieza ahora</a>
+                        <a onClick={suscribir} class="price__cta" >Empieza ahora</a>
                     </div>
                 </div>
                 <ToastContainer />
