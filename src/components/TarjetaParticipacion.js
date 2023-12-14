@@ -136,7 +136,7 @@ function TarjetaParticipacion(props) {
                                             listIntegrantes.map(integrante => {
                                                 return (
                                                     <div>
-                                                        <a aria-label="Chat on WhatsApp" href={"whatsapp://send/?phone=" + integrante.numeroCelular} target="_blank"><FontAwesomeIcon icon={faWhatsapp} style={{ color: "#37c011", paddingLeft: "10px" }} size="2x" /></a>
+                                                        <a aria-label="Chat on WhatsApp" href={"https://wa.me/" + integrante.numeroCelular} target="_blank"><FontAwesomeIcon icon={faWhatsapp} style={{ color: "#37c011", paddingLeft: "10px" }} size="2x" /></a>
                                                     </div>
                                                 )
                                             })
@@ -155,7 +155,7 @@ function TarjetaParticipacion(props) {
         );
     }
 
-    let whatsapp = "whatsapp://send/?phone=" + props.numeroCelularPropietario + "?text=Hola%20" + props.nombre + "%20te%20contacto%20desde%20la%20web%20de%20comvol%20por%20una%20postulacion%20tuya"
+    let whatsapp = "https://wa.me/" + props.numeroCelularPropietario + "?text=Hola%20" + props.nombre + "%20te%20contacto%20desde%20la%20web%20de%20comvol%20por%20una%20postulacion%20tuya"
     return (
 
         <div class="card" style={{ width: "25rem", marginBottom:"12px" }}>
