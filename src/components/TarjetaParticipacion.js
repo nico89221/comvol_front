@@ -136,7 +136,7 @@ function TarjetaParticipacion(props) {
                                             listIntegrantes.map(integrante => {
                                                 return (
                                                     <div>
-                                                        <a aria-label="Chat on WhatsApp" href={"https://wa.me/" + integrante.numeroCelular} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} style={{ color: "#37c011", paddingLeft: "10px" }} size="2x" /></a>
+                                                        <a aria-label="Chat on WhatsApp" href={"https://wa.me/" + integrante.numeroCelular} target="blanket" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} style={{ color: "#37c011", paddingLeft: "10px" }} size="2x" /></a>
                                                     </div>
                                                 )
                                             })
@@ -204,7 +204,7 @@ function TarjetaParticipacion(props) {
                 <div class="container-fechas">
                     <div class="wrap-fechas">
                     <p class="card-text"  >{props.propietario}</p>
-                    <a aria-label="Chat on WhatsApp" href={whatsapp} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} style={{ color: "#37c011", paddingLeft: "10px" }} size="2x" /></a>
+                    <a aria-label="Chat on WhatsApp" href={whatsapp} target="blanket" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} style={{ color: "#37c011", paddingLeft: "10px" }} size="2x" /></a>
                     </div>
                     <div class="wrap-fechas">
                         <Button variant="primary" onClick={() => setModalShow(true)}>
